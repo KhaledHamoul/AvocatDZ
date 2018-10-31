@@ -16,3 +16,4 @@
 Auth::routes();
 
 Route::get('/', 'VitrineController@index');
+Route::get('/Avocats', 'VitrineController@getAvocatsList');
