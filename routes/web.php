@@ -13,7 +13,15 @@
 
 
 
-Auth::routes();
+
+
+// Vitrine
 
 Route::get('/', 'VitrineController@index');
 Route::get('/Avocats', 'VitrineController@getAvocatsList');
+Route::get('/Inscription', 'VitrineController@register');
+
+// Avocats
+Route::post('/register_avocat', 'AvocatController@register');
+
+Auth::routes();

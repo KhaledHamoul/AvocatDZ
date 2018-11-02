@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Avocat;
+use App\Domaine;
 
 class vitrineController extends Controller
 {
@@ -11,6 +13,14 @@ class vitrineController extends Controller
     }
 
     public function getAvocatsList(){
-        return view('Vitrine.avocats');
+        $avocats = Avocat::all();
+        return view('Vitrine.avocats',['avocats' => $avocats]);
+    }
+
+    public function register(){
+        $domaines = Domaine::all();
+        return view('auth.register',['domaines' => $domaines]);
     }
 }
+
+

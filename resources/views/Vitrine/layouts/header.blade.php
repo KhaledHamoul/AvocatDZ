@@ -26,9 +26,9 @@
 										<li><a href="Avocats">Avocats</a></li>
 										<li><a href="#pack">Blog </a></li>
 										<li><a href="#spo">FAQ</a></li>
-                                        <li><a href="#spo"><i class="fa fa-user"></i></a></li>
+                                        <li><a href="/login"><i class="fa fa-user"></i></a></li>
                                         <li>
-											<button class="book-btn">S'inscrire</button>
+											<button onclick="location.href ='/Inscription'" class="book-btn">S'inscrire</button>
 										</li><!--/.project-btn--> 
 									</ul>
 								</div><!-- /.navbar-collapse -->

@@ -2,6 +2,38 @@
 <html>
     <head>
     @include('Vitrine.layouts.head')
+    <style>
+        .header-area {
+            position: fixed;
+            background-color:rgba(77,78,84,1);
+        }
+        .single-travel-boxes {
+          margin-top:100px;  
+          background-color: #fefefe;
+          margin-bottom: -60px;
+        }
+        .home-border {
+            border: none;
+        }
+        .single-package-item img {
+            width: 150px;
+            height:150px;
+            border-radius: 100%;
+            margin-left: 31%;
+            margin-top: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,.1);
+        }
+        .packages-para ul , li {
+            font-size: 14px;
+            color: #aaa;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 10px;
+        }
+        .packages-para li {
+            margin-bottom: 3px;
+            margin-left: 30px;
+        }
+    </style>
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -11,7 +43,63 @@
 
         @include('Vitrine.layouts.header')
 
+        @include('Vitrine.layouts.find_lawyer')
 
+        <!--packages start-->
+		<section class="packages">
+			<div class="container">
+				<div class="gallary-header text-center">
+					<h2>
+						Avocats
+					</h2>
+					<p>
+						Duis aute irure dolor in  velit esse cillum dolore eu fugiat nulla.  
+					</p>
+				</div><!--/.gallery-header-->
+				<div class="packages-content">
+					<div class="row">
+						@foreach( $avocats as $avocat)
+							<div class="col-md-4 col-sm-6">
+								<div class="single-package-item">
+									<img src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt="package-place">
+									<div class="single-package-item-txt">
+										<h3>{{ $avocat->nom }}</h3>
+										<div class="packages-para">
+											<p>
+												<i class="fa fa-angle-right"></i> &nbsp Avocat
+											</p>
+											<p>
+												<i class="fa fa-map-marker"></i> &nbsp  {{ $avocat->addresse }}
+											</p>
+										</div><!--/.packages-para-->
+										<div class="packages-para">
+											<p>
+												<i class="fa fa-angle-right"></i> &nbsp Spécialités
+											</p>
+											<ul>
+												
+												@foreach( $avocat->getDomaines()->get() as $doamine)
+													<li>{{ $doamine->domaine }}</li>
+												@endforeach
+											</ul>
+										</div><!--/.packages-para-->
+										<div class="about-btn">
+											<button onclick="location.href='/avocat/{{ $avocat->id }}'" class="about-view packages-btn">
+												En savoir plus
+											</button>
+										</div><!--/.about-btn-->
+									</div><!--/.single-package-item-txt-->
+								</div><!--/.single-package-item-->
+
+							</div><!--/.col-->
+						@endforeach
+                        
+					</div><!--/.row-->
+				</div><!--/.packages-content-->
+			</div><!--/.container-->
+
+		</section><!--/.packages-->
+		<!--packages end-->
 
         @include('Vitrine.layouts.footer')
     </body>
