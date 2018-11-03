@@ -9,12 +9,24 @@ use App\Domaine;
 class vitrineController extends Controller
 {
     public function index(){
-        return view('Vitrine.index');
+        $domaines = Domaine::all();
+        return view('Vitrine.index',['domaines' => $domaines]);
     }
 
     public function getAvocatsList(){
         $avocats = Avocat::all();
-        return view('Vitrine.avocats',['avocats' => $avocats]);
+        $domaines = Domaine::all();
+        return view('Vitrine.avocats',['avocats' => $avocats , 'domaines' => $domaines]);
+    }
+    public function getAvocatsListFilter(Request $data){
+        
+        if (( isset($data['ville']))&&( isset($data['domaine']))) $avocats = (Domaine::find($data['domaine']))->getAvocats()->where('ville',$data['ville'])->get();
+        else if ( isset($data['ville'])) $avocats = Avocat::where('ville',$data['ville'])->get();
+        else if ( isset($data['domaine'])) $avocats = (Domaine::find($data['domaine']))->getAvocats()->get();
+        else $avocats = Avocat::all();
+
+        $domaines = Domaine::all();
+        return view('Vitrine.avocats',['avocats' => $avocats , 'domaines' => $domaines]);
     }
 
     public function register(){

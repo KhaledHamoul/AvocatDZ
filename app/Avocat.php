@@ -12,6 +12,7 @@ class Avocat extends Model
         'prenom', 
         'telephone',
         'adresse',
+        'ville',
         'description',
         'img_url',
         'addresse',

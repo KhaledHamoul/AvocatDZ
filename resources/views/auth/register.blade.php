@@ -122,6 +122,19 @@
                                             </div><!--/.col-->
                                             <div class="col-lg-7 col-md-7 col-sm-12">
                                                 <div class="single-tab-select-box">
+                                                    <h2>Ville</h2>
+                                                    <div class="register-input">
+                                                        <select name="ville" class="form-control" required>
+                                                        <option disabled selected>Spécifier votre ville</option><!-- /.option-->
+															<option value="Alger">Alger</option><!-- /.option-->
+															<option value="Oran">Oran </option><!-- /.option-->
+															<option value="Annaba">Annaba</option><!-- /.option-->
+                                                        </select><!-- /.select-->
+                                                    </div><!-- /.travel-select-icon -->
+                                                </div><!--/.single-tab-select-box-->
+                                            </div><!--/.col-->
+                                            <div class="col-lg-7 col-md-7 col-sm-12">
+                                                <div class="single-tab-select-box">
                                                     <h2>Email</h2>
                                                     <div class="register-input">
                                                         <input name="email" type="text" class="form-control" placeholder="Email" required>

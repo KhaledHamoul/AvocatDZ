@@ -21,6 +21,7 @@ class Migration01 extends Migration
             $table->string('telephone');
             $table->string('description');
             $table->string('addresse');
+            $table->string('ville');
             $table->string('img_url');
             $table->string('lat');
             $table->string('lng');

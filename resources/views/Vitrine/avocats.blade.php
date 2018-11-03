@@ -52,9 +52,11 @@
 					<h2>
 						Avocats
 					</h2>
-					<p>
-						Duis aute irure dolor in  velit esse cillum dolore eu fugiat nulla.  
-					</p>
+					
+					@if ( $avocats->count() == 0 )
+						<p>Aucune avocat est trouvé pour cette requete. </p> 
+					@endif
+					
 				</div><!--/.gallery-header-->
 				<div class="packages-content">
 					<div class="row">
@@ -70,6 +72,9 @@
 											</p>
 											<p>
 												<i class="fa fa-map-marker"></i> &nbsp  {{ $avocat->addresse }}
+											</p>
+											<p>
+												<i class="fa fa-map"></i> &nbsp {{ $avocat->ville }}
 											</p>
 										</div><!--/.packages-para-->
 										<div class="packages-para">

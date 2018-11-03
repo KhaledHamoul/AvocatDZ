@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Avocat;
@@ -23,6 +24,7 @@ class AvocatController extends Controller
             'prenom' => $data['prenom'],
             'telephone' => $data['telephone'],
             'addresse' => $data['addresse'],
+            'ville' => $data['ville'],
             'description' => $data['description'],
             'img_url' => $data['img_url'],
             'addresse' => $data['addresse'],
@@ -41,6 +43,30 @@ class AvocatController extends Controller
             ]);
         }
 
-        return redirect('/');
+        Auth::login($user);
+
+        return redirect('/accueil_avocat');
     }
+
+    public function index(){
+        return view('Avocat.accueil');
+    }
+
+    public function rdv(){
+        return view('Avocat.rdv');
+    }
+    public function avis(){
+        return view('Avocat.avis');
+    }
+    public function visistes(){
+        return view('Avocat.visistes');
+    }
+    public function articles(){
+        return view('Avocat.articles');
+    }
+    public function compte(){
+        return view('Avocat.compte');
+    }
+
+
 }
