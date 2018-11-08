@@ -25,14 +25,34 @@
 									<form method="post" action="/Avocats">
 										@csrf
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12">
+										<div class="col-lg-4 col-md-4 col-sm-12">
 												<div class="single-tab-select-box">
 
-													<h2>Domaine</h2>
+													<h2>Profile</h2>
 
 													<div class="travel-select-icon">
 														<select name="domaine" class="form-control ">
-															<option disabled selected>Domaine</option><!-- /.option-->
+															<option disabled selected>Profile</option><!-- /.option-->
+															
+																<option value="">Avocat</option>
+																<option value="">Comptable</option>
+																<option value="">Huissier</option>
+																<option value="">Notaire</option>
+																<option value="">Traducteur</option>
+															
+														</select><!-- /.select-->
+													</div><!-- /.travel-select-icon -->
+
+												</div><!--/.single-tab-select-box-->
+											</div><!--/.col-->
+											<div class="col-lg-4 col-md-4 col-sm-12">
+												<div class="single-tab-select-box">
+
+													<h2>Compétence en</h2>
+
+													<div class="travel-select-icon">
+														<select name="domaine" class="form-control ">
+															<option disabled selected>Compétence en ...	</option><!-- /.option-->
 															@foreach( $domaines as $domaine)
 																<option value="{{ $domaine->id }}">{{ $domaine->domaine }}</option>
 															@endforeach

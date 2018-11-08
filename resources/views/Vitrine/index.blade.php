@@ -21,8 +21,8 @@
 						<div class="col-sm-12">
 							<div class="single-about-us">
 								<div class="about-us-txt">
-									<h2>
-										Choisissez votre avocat 
+									<h2 style="font-size:25px">
+									Plateforme numérique Algrienne d'information juridique et <br/><br/>de mise en relation 
 
 									</h2>
 									<div class="about-btn">

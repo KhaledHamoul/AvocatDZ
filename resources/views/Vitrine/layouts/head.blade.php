@@ -11,38 +11,38 @@
 		<title>{{ config('app.name', 'AvocatDZ') }}</title>
 
 		<!-- favicon img -->
-		<link rel="shortcut icon" type="image/icon" href="{{ ('Vitrine_assets/logo/favicon.png') }}"/>
+		<link rel="shortcut icon" type="image/icon" href="{{ ('/Vitrine_assets/logo/favicon.png') }}"/>
 
 		<!--font-awesome.min.css-->
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/font-awesome.min.css') }}" />
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/font-awesome.min.css') }}" />
 
 		<!--animate.css-->
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/animate.css') }}" />
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/animate.css') }}" />
 
 		<!--hover.css-->
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/hover-min.css') }}">
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/hover-min.css') }}">
 
 		<!--datepicker.css-->
-		<link rel="stylesheet"  href="{{ ('Vitrine_assets/css/datepicker.css') }}" >
+		<link rel="stylesheet"  href="{{ ('/Vitrine_assets/css/datepicker.css') }}" >
 
 		<!--owl.carousel.css-->
-        <link rel="stylesheet" href="{{ ('Vitrine_assets/css/owl.carousel.min.css') }}">
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/owl.theme.default.min.css') }}"/>
+        <link rel="stylesheet" href="{{ ('/Vitrine_assets/css/owl.carousel.min.css') }}">
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/owl.theme.default.min.css') }}"/>
 
 		<!-- range css-->
-        <link rel="stylesheet" href="{{ ('Vitrine_assets/css/jquery-ui.min.css') }}" />
+        <link rel="stylesheet" href="{{ ('/Vitrine_assets/css/jquery-ui.min.css') }}" />
 
 		<!--bootstrap.min.css-->
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/bootstrap.min.css') }}" />
 
 		<!-- bootsnav -->
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/bootsnav.css') }}"/>
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/bootsnav.css') }}"/>
 
 		<!--style.css-->
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/style.css') }}" />
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/style.css') }}" />
 
 		<!--responsive.css-->
-		<link rel="stylesheet" href="{{ ('Vitrine_assets/css/responsive.css') }}" />
+		<link rel="stylesheet" href="{{ ('/Vitrine_assets/css/responsive.css') }}" />
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -89,7 +89,7 @@
 											</ul>
 										</div><!--/.packages-para-->
 										<div class="about-btn">
-											<button onclick="location.href='/avocat/{{ $avocat->id }}'" class="about-view packages-btn">
+											<button onclick="location.href='/Avocats/{{ $avocat->id }}'" class="about-view packages-btn">
 												En savoir plus
 											</button>
 										</div><!--/.about-btn-->

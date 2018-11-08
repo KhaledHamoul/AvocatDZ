@@ -6,7 +6,7 @@
 					<div class="row">
 						<div class="col-sm-2">
 							<div class="logo">
-								<a href="index.html">
+								<a href="/">
 									Avocat<span>DZ</span>
 								</a>
 							</div><!-- /.logo-->
@@ -23,7 +23,7 @@
 								<div class="collapse navbar-collapse">		  
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/">Accueil</a></li>
-										<li><a href="Avocats">Avocats</a></li>
+										<li><a href="/Avocats">Avocats</a></li>
 										<li><a href="#pack">Blog </a></li>
 										<li><a href="#spo">FAQ</a></li>
                                         <li><a href="/login"><i class="fa fa-user"></i></a></li>

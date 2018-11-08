@@ -212,14 +212,14 @@
                             <!-- ****************** Client ************************-->
                             <div role="tabpanel" class="tab-pane fade in" id="client">
 								<div class="tab-para">
-                                    <form action="/register_clinet" method="post">
+                                    <form action="/register_client" method="post">
                                         @csrf
                                         <div class="row"> 
                                             <div class="col-lg-7 col-md-7 col-sm-12">
                                                 <div class="single-tab-select-box">
                                                     <h2>Nom</h2>
                                                     <div class="register-input">
-                                                        <input type="text" class="form-control" placeholder="Nom">
+                                                        <input name="nom" type="text" class="form-control" placeholder="Nom" required>
                                                     </div><!-- /.travel-select-icon -->
                                                 </div><!--/.single-tab-select-box-->
                                             </div><!--/.col-->
@@ -227,7 +227,7 @@
                                                 <div class="single-tab-select-box">
                                                     <h2>Prénom</h2>
                                                     <div class="register-input">
-                                                        <input type="text" class="form-control" placeholder="Prénom">
+                                                        <input name="prenom" type="text" class="form-control" placeholder="Prénom" required>
                                                     </div><!-- /.travel-select-icon -->
                                                 </div><!--/.single-tab-select-box-->
                                             </div><!--/.col-->
@@ -235,7 +235,20 @@
                                                 <div class="single-tab-select-box">
                                                     <h2>Addresse</h2>
                                                     <div class="register-input">
-                                                        <input type="text" class="form-control" placeholder="Addresse">
+                                                        <input name="addresse" type="text" class="form-control" placeholder="Addresse" required>
+                                                    </div><!-- /.travel-select-icon -->
+                                                </div><!--/.single-tab-select-box-->
+                                            </div><!--/.col-->
+                                            <div class="col-lg-7 col-md-7 col-sm-12">
+                                                <div class="single-tab-select-box">
+                                                    <h2>Ville</h2>
+                                                    <div class="register-input">
+                                                        <select name="ville" class="form-control" required>
+                                                        <option disabled selected>Spécifier votre ville</option><!-- /.option-->
+															<option value="Alger">Alger</option><!-- /.option-->
+															<option value="Oran">Oran </option><!-- /.option-->
+															<option value="Annaba">Annaba</option><!-- /.option-->
+                                                        </select><!-- /.select-->
                                                     </div><!-- /.travel-select-icon -->
                                                 </div><!--/.single-tab-select-box-->
                                             </div><!--/.col-->
@@ -243,7 +256,7 @@
                                                 <div class="single-tab-select-box">
                                                     <h2>Email</h2>
                                                     <div class="register-input">
-                                                        <input type="text" class="form-control" placeholder="Email">
+                                                        <input name="email" type="text" class="form-control" placeholder="Email" required>
                                                     </div><!-- /.travel-select-icon -->
                                                 </div><!--/.single-tab-select-box-->
                                             </div><!--/.col-->
@@ -251,7 +264,7 @@
                                                 <div class="single-tab-select-box">
                                                     <h2>Téléphone</h2>
                                                     <div class="register-input">
-                                                        <input type="text" class="form-control" placeholder="Téléphone">
+                                                        <input name="telephone" type="text" class="form-control" placeholder="Téléphone" required>
                                                     </div><!-- /.travel-select-icon -->
                                                 </div><!--/.single-tab-select-box-->
                                             </div><!--/.col-->
@@ -259,7 +272,7 @@
                                                 <div class="single-tab-select-box">
                                                     <h2>Passeword</h2>
                                                     <div class="register-input">
-                                                        <input type="password" class="form-control" placeholder="Passeword">
+                                                        <input name="password" type="password" class="form-control" placeholder="Passeword" required>
                                                     </div><!-- /.travel-select-icon -->
                                                 </div><!--/.single-tab-select-box-->
                                             </div><!--/.col-->
@@ -271,8 +284,7 @@
                                                     </div><!-- /.travel-select-icon -->
                                                 </div><!--/.single-tab-select-box-->
                                             </div><!--/.col-->
-                                        </div><!--/.row-->
-
+                                        </div>
                                         <div class="row">
                                             <div class="clo-sm-7">
                                                 <div class="about-btn travel-mrt-0 pull-right">

@@ -27,7 +27,6 @@ class AvocatController extends Controller
             'ville' => $data['ville'],
             'description' => $data['description'],
             'img_url' => $data['img_url'],
-            'addresse' => $data['addresse'],
             'user_id' => $user->id,
             'lat' => 'lat',
             'lng' => 'lng',
@@ -48,6 +47,14 @@ class AvocatController extends Controller
         return redirect('/accueil_avocat');
     }
 
+    public function login(Request $data){
+        $credentials = $data->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/accueil_avocat');
+        }
+        return redirect('/login');
+    }
+
     public function index(){
         return view('Avocat.accueil');
     }
@@ -55,15 +62,19 @@ class AvocatController extends Controller
     public function rdv(){
         return view('Avocat.rdv');
     }
+
     public function avis(){
         return view('Avocat.avis');
     }
+
     public function visistes(){
         return view('Avocat.visistes');
     }
+
     public function articles(){
         return view('Avocat.articles');
     }
+
     public function compte(){
         return view('Avocat.compte');
     }
