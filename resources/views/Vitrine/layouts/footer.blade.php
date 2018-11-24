@@ -65,7 +65,8 @@
 		<!-- footer-copyright end -->
 
 
-
+		<!--Vue JS-->
+		<script src="{{ asset('js/vue-config.js') }}"></script>
 
 		<script src="{{ ('/Vitrine_assets/js/jquery.js') }}"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -103,3 +104,5 @@
 
 		<!--Custom JS-->
 		<script src="{{ ('/Vitrine_assets/js/custom.js') }}"></script>
+
+		

@@ -41,4 +41,14 @@ Route::get('/accueil_client','ClientController@index')->middleware('auth','check
 Route::get('/rdv_client','ClientController@rdv')->middleware('auth','checkClient');
 Route::get('/compte_client','ClientController@compte')->middleware('auth','checkClient');
 
+//Admin
+Route::post('/register_admin', 'AdminController@register');
+Route::get('/login_admin', 'AdminController@loginPage');
+Route::post('/login_amdin', 'AdminController@login');
+Route::get('/Admin','AdminController@index')->middleware('auth','checkAdmin');
+Route::get('/rdv_admin','AdminController@rdv')->middleware('auth','checkAdmin');
+Route::get('/compte_admin','AdminController@compte')->middleware('auth','checkAdmin');
+
+Route::get('/test', 'VitrineController@test');
+
 Auth::routes();

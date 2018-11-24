@@ -3,10 +3,7 @@
     <head>
     @include('Vitrine.layouts.head')
     <style>
-        .header-area {
-            position: fixed;
-            background-color:rgba(77,78,84,1);
-        }
+        
         .single-travel-boxes {
           margin-top:100px;  
           background-color: #fefefe;
@@ -83,8 +80,8 @@
 											</p>
 											<ul>
 												
-												@foreach( $avocat->getDomaines()->get() as $doamine)
-													<li>{{ $doamine->domaine }}</li>
+												@foreach( $avocat->getCompetences()->get() as $competence)
+													<li>{{ $competence->competence }}</li>
 												@endforeach
 											</ul>
 										</div><!--/.packages-para-->

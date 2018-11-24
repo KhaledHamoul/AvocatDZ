@@ -60,32 +60,31 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(17);
-module.exports = __webpack_require__(1);
+__webpack_require__(13);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
 
-/***/ 1:
+/***/ 13:
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'D:\\projects\\AVOCADZ\\AvocatDZ\\resources\\js\\vue.js'");
+
+/***/ }),
+
+/***/ 49:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, __webpack_exports__) {
-
-"use strict";
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'D:\\projects\\AVOCADZ\\AvocatDZ\\resources\\js\\app.js'");
 
 /***/ })
 

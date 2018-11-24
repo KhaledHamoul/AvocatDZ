@@ -1,5 +1,11 @@
+	<style>
+	.dropdown-menu {
+		margin-top:202px;
+		text-align: center;
+	}
 
-		<!-- main-menu Start -->
+	</style>
+	<!-- main-menu Start -->
 		<header class="top-area">
 			<div class="header-area">
 				<div class="container">
@@ -26,10 +32,25 @@
 										<li><a href="/Avocats">Avocats</a></li>
 										<li><a href="#pack">Blog </a></li>
 										<li><a href="#spo">FAQ</a></li>
+										@auth
+											<li class="nav-item dropdown"><a  class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->email }}</a>
+											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<a class="dropdown-item" href="#">Dashboard</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#">Profile</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" onclick="document.getElementById('logout').submit()" href="#">Se deconnecter</a>
+											</div>
+											<form action="/logout" method="post" id="logout" style="display:none">
+												@csrf
+											</form>
+										@else
+										</li>
                                         <li><a href="/login"><i class="fa fa-user"></i></a></li>
                                         <li>
 											<button onclick="location.href ='/Inscription'" class="book-btn">S'inscrire</button>
-										</li><!--/.project-btn--> 
+										</li><!--/.project-btn-->
+										@endif 
 									</ul>
 								</div><!-- /.navbar-collapse -->
 							</div><!-- /.main-menu-->

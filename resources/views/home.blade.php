@@ -1,23 +1,22 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+<html>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@include('Vitrine.layouts.head')
+</html>
+<body>
+khaled
+<div id="filtre">
+    <filtre></filtre>
+</div>   
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@include('Vitrine.layouts.footer')
+<script src="{{ asset('js/vue-config.js') }}"></script>
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+</body>
+
+       
+   
+
+                    
+
+

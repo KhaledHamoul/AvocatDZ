@@ -5,37 +5,64 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Avocat;
-use App\Domaine;
+use App\Competence;
+use App\Profile;
 use App\Client;
 use App\Visite;
 use App\VisiteInconnu;
 
 class vitrineController extends Controller
 {
-    public function index(){
+    public function test(){
         $domaines = Domaine::all();
-        return view('Vitrine.index',['domaines' => $domaines]);
+        return view('home',['domaines' => $domaines]);
+    }
+    public function index(){
+        return view('Vitrine.index');
     }
 
     public function getAvocatsList(){
         $avocats = Avocat::all();
-        $domaines = Domaine::all();
-        return view('Vitrine.avocats',['avocats' => $avocats , 'domaines' => $domaines]);
+        return view('Vitrine.avocats',['avocats' => $avocats ]);
     }
+    
     public function getAvocatsListFilter(Request $data){
         
-        if (( isset($data['ville']))&&( isset($data['domaine']))) $avocats = (Domaine::find($data['domaine']))->getAvocats()->where('ville',$data['ville'])->get();
-        else if ( isset($data['ville'])) $avocats = Avocat::where('ville',$data['ville'])->get();
-        else if ( isset($data['domaine'])) $avocats = (Domaine::find($data['domaine']))->getAvocats()->get();
-        else $avocats = Avocat::all();
-
-        $domaines = Domaine::all();
-        return view('Vitrine.avocats',['avocats' => $avocats , 'domaines' => $domaines]);
+        if ( isset($data['profile'])) {
+            $avocats_profile = Avocat::where('profile_id',$data['profile'])->get();
+            if ( isset($data['competence'])) {
+                $avocats_competence = (Competence::find($data['competence']))->getAvocats()->get();
+                if ( isset($data['ville'])) {
+                    $avocats_ville = Avocat::where('ville',$data['ville'])->get();
+                    $avocats = $avocats_profile->intersect($avocats_competence->intersect($avocats_ville) );
+                    return view('Vitrine.avocats',['avocats' => $avocats]);
+                }
+                else {
+                    $avocats = $avocats_profile->intersect($avocats_competence );
+                    return view('Vitrine.avocats',['avocats' => $avocats]);
+                }
+            }
+            else if ( isset($data['ville'])) {
+                $avocats_ville = Avocat::where('ville',$data['ville'])->get();
+                $avocats = $avocats_profile->intersect($avocats_ville);
+                return view('Vitrine.avocats',['avocats' => $avocats]);
+            }
+            else return view('Vitrine.avocats',['avocats' => $avocats_profile]);
+        }
+        else if ( isset($data['ville'])) {
+            $avocats_ville = Avocat::where('ville',$data['ville'])->get();
+            return view('Vitrine.avocats',['avocats' => $avocats_ville]);
+        } 
+        else {
+            $avocats = Avocat::all();
+            return view('Vitrine.avocats',['avocats' => $avocats]);
+        }
+        
     }
 
     public function register(){
-        $domaines = Domaine::all();
-        return view('auth.register',['domaines' => $domaines]);
+        $profiles = Profile::all();
+        return view('Auth.register',['profiles' => $profiles]);
     }
 
     public function getAvocatInfo( $id ){

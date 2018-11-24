@@ -159,11 +159,12 @@
                                             </div><!--/.col-->
                                             <div class="col-lg-7 col-md-7 col-sm-12">
                                                 <div class="single-tab-select-box">
-                                                    <h2>Domaine</h2>
+                                                    <h2>Profile</h2>
                                                     <div class="register-input">
-                                                        <select name="domaine[]" class="form-control " multiple style="height:100px" required>
-                                                            @foreach($domaines as $domaine)  
-                                                                <option value="{{$domaine->id}}">{{$domaine->domaine}}</option><!-- /.option-->
+                                                        <select name="profile" class="form-control " required>
+                                                            <option>--</option><!-- /.option-->
+                                                            @foreach($profiles as $profile)  
+                                                                <option value="{{$profile->id}}">{{$profile->profile}}</option><!-- /.option-->
                                                             @endforeach
                                                         </select><!-- /.select-->
                                                     </div><!-- /.travel-select-icon -->
@@ -298,7 +299,7 @@
 								</div><!--/.tab-para-->
 
                             </div><!--/.tabpannel-->
-
+                            
 
 						</div><!--/.tab content-->
 					</div><!--/.desc-tabs-->

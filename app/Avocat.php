@@ -17,12 +17,13 @@ class Avocat extends Model
         'img_url',
         'addresse',
         'user_id',
+        'profile_id',
         'lat',
         'lng'
     ];
 
-    public function getDomaines()
+    public function getCompetences()
     {
-        return $this->belongsToMany('App\Domaine','avocat_domaines','avocat_id','domaine_id');
+        return $this->belongsToMany('App\Competence','avocat_competences','avocat_id','competence_id');
     }
 }

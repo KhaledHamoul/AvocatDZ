@@ -80,8 +80,8 @@
 												</p>
 												<ul>
 													
-													@foreach( $avocat->getDomaines()->get() as $doamine)
-														<li>{{ $doamine->domaine }}</li>
+													@foreach( $avocat->getCompetences()->get() as $competence)
+														<li>{{ $competence->competence }}</li>
 													@endforeach
 												</ul>
 												<p>
@@ -94,7 +94,7 @@
 											<div class="col-md-6" >
 												<img style="width:100%;height:400px;margin:auto;border-radius:0;box-shadow:none" src="Vitrine_assets/images/client/testimonial2.jpg" alt="map">
 											</div>
-											<div class="col-md-6 pull-right">
+											<div class="col-md-6 col-sm-12 pull-right">
 												<p>
 													<h3><i class="fa fa-clock-o"></i>&nbsp Horaires</h3>
 												</p>

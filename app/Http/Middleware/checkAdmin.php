@@ -3,6 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use App\Admin;
+use App\User;
 
 class checkAdmin
 {
@@ -15,6 +18,8 @@ class checkAdmin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $admin = Admin::where('user_id',Auth::id())->get();
+        if( $admin->count() > 0 ) return $next($request);
+        return redirect('/');
     }
 }

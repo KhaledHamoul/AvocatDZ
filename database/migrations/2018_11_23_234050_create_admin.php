@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvocatdomaineMigration extends Migration
+class CreateAdmin extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,14 @@ class CreateAvocatdomaineMigration extends Migration
     public function up()
     {
         //
-        Schema::create('avocat_domaines', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('domaine_id')->unsigned();
-            $table->integer('avocat_id')->unsigned();
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('img_url');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
-            $table->foreign('avocat_id')->references('id')->on('avocats')
-						->onDelete('cascade')
-                        ->onUpdate('cascade');
-            $table->foreign('domaine_id')->references('id')->on('domaines')
+            $table->foreign('user_id')->references('id')->on('users')
 						->onDelete('cascade')
 						->onUpdate('cascade');
         });

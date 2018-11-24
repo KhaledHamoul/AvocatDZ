@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Avocat;
 use App\User;
-use App\Domaine;
+use App\Profile;
 use App\AvocatDomaine;
 
 
@@ -19,6 +19,7 @@ class AvocatController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
         $avocat = Avocat::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
@@ -28,19 +29,12 @@ class AvocatController extends Controller
             'description' => $data['description'],
             'img_url' => $data['img_url'],
             'user_id' => $user->id,
+            'profile_id' => $data['profile'],
             'lat' => 'lat',
             'lng' => 'lng',
             'img_url' => '/avocat_img/user.png'
 
         ]);
-
-        
-        foreach($data['domaine'] as $domaine){
-            AvocatDomaine::create([
-                'avocat_id' => (int) $avocat->id,
-                'domaine_id' => (int) $domaine,
-            ]);
-        }
 
         Auth::login($user);
 

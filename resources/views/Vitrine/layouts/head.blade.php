@@ -10,6 +10,9 @@
 		<!-- TITLE OF SITE -->
 		<title>{{ config('app.name', 'AvocatDZ') }}</title>
 
+		<!-- CSRF Token -->
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+
 		<!-- favicon img -->
 		<link rel="shortcut icon" type="image/icon" href="{{ ('/Vitrine_assets/logo/favicon.png') }}"/>
 

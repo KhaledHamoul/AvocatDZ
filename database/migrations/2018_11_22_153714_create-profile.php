@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDomaineMigration extends Migration
+class CreateProfile extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class CreateDomaineMigration extends Migration
     public function up()
     {
         //
-        Schema::create('domaines', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('domaine');
-            $table->string('desciption');
+            $table->string('description')->nullable();
+            $table->string('profile');
         });
 
         
