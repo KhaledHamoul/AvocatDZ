@@ -14,8 +14,8 @@ use App\VisiteInconnu;
 class vitrineController extends Controller
 {
     public function test(){
-        $domaines = Domaine::all();
-        return view('home',['domaines' => $domaines]);
+        
+        return public_path();
     }
     public function index(){
         return view('Vitrine.index');

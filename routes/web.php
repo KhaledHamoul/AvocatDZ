@@ -52,3 +52,7 @@ Route::get('/compte_admin','AdminController@compte')->middleware('auth','checkAd
 Route::get('/test', 'VitrineController@test');
 
 Auth::routes();
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
