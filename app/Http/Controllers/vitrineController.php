@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Avocat;
+use App\Professionnel;
 use App\Competence;
 use App\Profile;
 use App\Client;
@@ -21,41 +21,41 @@ class vitrineController extends Controller
         return view('Vitrine.index');
     }
 
-    public function getAvocatsList(){
-        $avocats = Avocat::all();
-        return view('Vitrine.avocats',['avocats' => $avocats ]);
+    public function getProfessionnelsList(){
+        $pros = Professionnel::all();
+        return view('Vitrine.professionnels',['professionnels' => $pros ]);
     }
     
-    public function getAvocatsListFilter(Request $data){
+    public function getProfessionnelsListFilter(Request $data){
         
         if ( isset($data['profile'])) {
-            $avocats_profile = Avocat::where('profile_id',$data['profile'])->get();
+            $pro_profile = Professionnel::where('profile_id',$data['profile'])->get();
             if ( isset($data['competence'])) {
-                $avocats_competence = (Competence::find($data['competence']))->getAvocats()->get();
+                $pros_competence = (Competence::find($data['competence']))->getProfessionnels()->get();
                 if ( isset($data['ville'])) {
-                    $avocats_ville = Avocat::where('ville',$data['ville'])->get();
-                    $avocats = $avocats_profile->intersect($avocats_competence->intersect($avocats_ville) );
-                    return view('Vitrine.avocats',['avocats' => $avocats]);
+                    $pros_ville = Professionnel::where('ville',$data['ville'])->get();
+                    $pros = $pro_profile->intersect($pros_competence->intersect($pros_ville) );
+                    return view('Vitrine.professionnels',['professionnels' => $pros]);
                 }
                 else {
-                    $avocats = $avocats_profile->intersect($avocats_competence );
-                    return view('Vitrine.avocats',['avocats' => $avocats]);
+                    $pros = $pro_profile->intersect($pros_competence );
+                    return view('Vitrine.professionnels',['professionnels' => $pros]);
                 }
             }
             else if ( isset($data['ville'])) {
-                $avocats_ville = Avocat::where('ville',$data['ville'])->get();
-                $avocats = $avocats_profile->intersect($avocats_ville);
-                return view('Vitrine.avocats',['avocats' => $avocats]);
+                $pros_ville = Professionnel::where('ville',$data['ville'])->get();
+                $pros = $pro_profile->intersect($pros_ville);
+                return view('Vitrine.professionnels',['professionnels' => $pros]);
             }
-            else return view('Vitrine.avocats',['avocats' => $avocats_profile]);
+            else return view('Vitrine.professionnels',['professionnels' => $pro_profile]);
         }
         else if ( isset($data['ville'])) {
-            $avocats_ville = Avocat::where('ville',$data['ville'])->get();
-            return view('Vitrine.avocats',['avocats' => $avocats_ville]);
+            $pros_ville = Professionnel::where('ville',$data['ville'])->get();
+            return view('Vitrine.professionnels',['professionnels' => $pros_ville]);
         } 
         else {
-            $avocats = Avocat::all();
-            return view('Vitrine.avocats',['avocats' => $avocats]);
+            $pros = Professionnel::all();
+            return view('Vitrine.professionnels',['professionnels' => $pros]);
         }
         
     }
@@ -65,24 +65,24 @@ class vitrineController extends Controller
         return view('Auth.register',['profiles' => $profiles]);
     }
 
-    public function getAvocatInfo( $id ){
-        $avocat = Avocat::find($id);
+    public function getProfessionnelInfo( $id ){
+        $pros = Professionnel::find($id);
         $rdv_show = false;
         $client = Client::where('user_id',Auth::id())->get();
 
         if( $client->count() > 0 ){
             $rdv_show = true;
             Visite::create([
-                'avocat_id' => $id,
+                'professionnel_id' => $id,
                 'client_id' => $client[0]->id,
             ]);
         } 
         else {
             VisiteInconnu::create([
-                'avocat_id' => $id,
+                'professionnel_id' => $id,
             ]);
         }
-        return view('Vitrine.avocat_info',['avocat' => $avocat , 'rdv_show' => $rdv_show]);
+        return view('Vitrine.professionnel_info',['professionnel' => $pros , 'rdv_show' => $rdv_show]);
     }
 }
 

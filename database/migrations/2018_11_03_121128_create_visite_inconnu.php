@@ -16,9 +16,9 @@ class CreateVisiteInconnu extends Migration
         //
         Schema::create('visite_inconnus', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('avocat_id')->unsigned();
+            $table->integer('professionnel_id')->unsigned();
             $table->timestamps();
-            $table->foreign('avocat_id')->references('id')->on('avocats')
+            $table->foreign('professionnel_id')->references('id')->on('professionnels')
 						->onDelete('cascade')
                         ->onUpdate('cascade');
         });

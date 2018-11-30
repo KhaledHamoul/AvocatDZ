@@ -93,7 +93,7 @@
 
 							<div role="tabpanel" class="tab-pane active fade in" id="avocat">
 								<div class="tab-para">
-                                    <form action="/login_avocat" method="post">
+                                    <form action="/login_professionnel" method="post">
                                         @csrf
                                         <div class="row"> 
                                             <div class="col-lg-7 col-md-7 col-sm-12">

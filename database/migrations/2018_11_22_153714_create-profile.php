@@ -18,6 +18,7 @@ class CreateProfile extends Migration
             $table->increments('id');
             $table->string('description')->nullable();
             $table->string('profile');
+            $table->timestamps();
         });
 
         

@@ -18,21 +18,21 @@
 // Vitrine
 
 Route::get('/', 'VitrineController@index');
-Route::get('/Avocats', 'VitrineController@getAvocatsList');
-Route::get('/Avocats/{id}', 'VitrineController@getAvocatInfo');
-Route::post('/Avocats','VitrineController@getAvocatsListFilter');
+Route::get('/professionnels', 'VitrineController@getProfessionnelsList');
+Route::get('/professionnels/{id}', 'VitrineController@getProfessionnelInfo');
+Route::post('/professionnels','VitrineController@getProfessionnelsListFilter');
 Route::get('/Inscription', 'VitrineController@register');
 
 
 // Avocats
-Route::post('/register_avocat', 'AvocatController@register');
-Route::post('/login_avocat', 'AvocatController@login');
-Route::get('/accueil_avocat','AvocatController@index')->middleware('auth','checkAvocat');
-Route::get('/rdv_avocat','AvocatController@rdv')->middleware('auth','checkAvocat');
-Route::get('/avis_avocat','AvocatController@avis')->middleware('auth','checkAvocat');
-Route::get('/visites_avocat','AvocatController@visistes')->middleware('auth','checkAvocat');
-Route::get('/articles_avocat','AvocatController@articles')->middleware('auth','checkAvocat');
-Route::get('/compte_avocat','AvocatController@compte')->middleware('auth','checkAvocat');
+Route::post('/register_professionnel', 'ProfessionnelController@register');
+Route::post('/login_professionnel', 'ProfessionnelController@login');
+Route::get('/accueil_professionnel','ProfessionnelController@index')->middleware('auth','checkAvocat');
+Route::get('/rdv_professionnel','ProfessionnelController@rdv')->middleware('auth','checkAvocat');
+Route::get('/avis_professionnel','ProfessionnelController@avis')->middleware('auth','checkAvocat');
+Route::get('/visites_professionnel','ProfessionnelController@visistes')->middleware('auth','checkAvocat');
+Route::get('/articles_professionnel','ProfessionnelController@articles')->middleware('auth','checkAvocat');
+Route::get('/compte_professionnel','ProfessionnelController@compte')->middleware('auth','checkAvocat');
 
 //client
 Route::post('/register_client', 'ClientController@register');

@@ -14,7 +14,7 @@ class Migration01 extends Migration
     public function up()
     {
         //
-        Schema::create('avocats', function (Blueprint $table) {
+        Schema::create('professionnels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');

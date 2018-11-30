@@ -8,7 +8,7 @@ class Visite extends Model
 {
     //
     protected $fillable = [
-        'avocat_id', 
+        'professionnel_id', 
         'client_id', 
     ];
 }

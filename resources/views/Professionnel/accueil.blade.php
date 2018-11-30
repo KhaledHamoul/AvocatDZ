@@ -4,14 +4,14 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
-    @include('Avocat.layouts.head')
+    @include('Professionnel.layouts.head')
 </head>
 
 <body>
-    @include('Avocat.layouts.leftPanel')
+    @include('Professionnel.layouts.leftPanel')
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
-        @include('Avocat.layouts.header')
+        @include('Professionnel.layouts.header')
         <!-- Content -->
         <div class="content">
             <!-- Animated -->
@@ -110,6 +110,6 @@
         </div>
         <!-- /.content -->
         <div class="clearfix"></div>
-     @include('Avocat.layouts.footer')
+     @include('Professionnel.layouts.footer')
 </body>
 </html>

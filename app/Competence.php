@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Competence extends Model
 {
     //
+    protected $fillable = [
+        'profile_id',
+    ];
 
-    public function getAvocats()
+    public function getProfessionnels()
     {
-        return $this->belongsToMany('App\Avocat','avocat_competences','competence_id','avocat_id');
+        return $this->belongsToMany('App\Professionnel','professionnels_competences','competence_id','professionnel_id');
+    }
+    public function profileId(){
+        return $this->belongsTo('App\Profile','profile_id');
     }
 }

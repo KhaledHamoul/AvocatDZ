@@ -8,6 +8,6 @@ class VisiteInconnu extends Model
 {
     //
     protected $fillable = [
-        'avocat_id',  
+        'professionnel_id',  
     ];
 }

@@ -60,7 +60,7 @@
 								<div class="single-package-item">
 									<img src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt="package-place">
 									<div class="single-package-item-txt">
-										<h3>{{ $avocat->nom }} {{ $avocat->prenom }}</h3>
+										<h3>{{ $professionnel->nom }} {{ $professionnel->prenom }}</h3>
 										<div class="packages-para row">
 											<div class="col-md-6" >
 												<p>
@@ -70,17 +70,17 @@
 													<i class="fa fa-angle-right"></i> &nbsp Avocat
 												</p>
 												<p>
-													<i class="fa fa-map-marker"></i> &nbsp  {{ $avocat->addresse }}
+													<i class="fa fa-map-marker"></i> &nbsp  {{ $professionnel->addresse }}
 												</p>
 												<p>
-													<i class="fa fa-map"></i> &nbsp {{ $avocat->ville }}
+													<i class="fa fa-map"></i> &nbsp {{ $professionnel->ville }}
 												</p>
 												<p>
 													<h3>Spécialités</h3> 
 												</p>
 												<ul>
 													
-													@foreach( $avocat->getCompetences()->get() as $competence)
+													@foreach( $professionnel->getCompetences()->get() as $competence)
 														<li>{{ $competence->competence }}</li>
 													@endforeach
 												</ul>
@@ -88,7 +88,7 @@
 													<h3>Présentation</h3> 
 												</p>
 												<p>
-													<i class="fa fa-angle-right"></i> &nbsp {{ $avocat->description }}
+													<i class="fa fa-angle-right"></i> &nbsp {{ $professionnel->description }}
 												</p>
 											</div>
 											<div class="col-md-6" >
@@ -123,7 +123,7 @@
 										</div><!--/.packages-para-->
 										<div class="about-btn">
 											@if($rdv_show)
-											<button onclick="location.href='/avocat/{{ $avocat->id }}'" class="about-view packages-btn">
+											<button onclick="location.href='/professionnel/{{ $professionnel->id }}'" class="about-view packages-btn">
 												Rendez-vous
 											</button>
 											@endif

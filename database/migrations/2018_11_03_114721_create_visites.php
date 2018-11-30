@@ -16,10 +16,10 @@ class CreateVisites extends Migration
         //
         Schema::create('visites', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('avocat_id')->unsigned();
+            $table->integer('professionnel_id')->unsigned();
             $table->integer('client_id')->unsigned();
             $table->timestamps();
-            $table->foreign('avocat_id')->references('id')->on('avocats')
+            $table->foreign('professionnel_id')->references('id')->on('professionnels')
 						->onDelete('cascade')
                         ->onUpdate('cascade');
             $table->foreign('client_id')->references('id')->on('clients')

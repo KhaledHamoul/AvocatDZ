@@ -50,28 +50,28 @@
 						Avocats
 					</h2>
 					
-					@if ( $avocats->count() == 0 )
+					@if ( $professionnels->count() == 0 )
 						<p>Aucune avocat est trouvé pour cette requete. </p> 
 					@endif
 					
 				</div><!--/.gallery-header-->
 				<div class="packages-content">
 					<div class="row">
-						@foreach( $avocats as $avocat)
+						@foreach( $professionnels as $pro)
 							<div class="col-md-4 col-sm-6">
 								<div class="single-package-item">
 									<img src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt="package-place">
 									<div class="single-package-item-txt">
-										<h3>{{ $avocat->nom }}</h3>
+										<h3>{{ $pro->nom }}</h3>
 										<div class="packages-para">
 											<p>
 												<i class="fa fa-angle-right"></i> &nbsp Avocat
 											</p>
 											<p>
-												<i class="fa fa-map-marker"></i> &nbsp  {{ $avocat->addresse }}
+												<i class="fa fa-map-marker"></i> &nbsp  {{ $pro->addresse }}
 											</p>
 											<p>
-												<i class="fa fa-map"></i> &nbsp {{ $avocat->ville }}
+												<i class="fa fa-map"></i> &nbsp {{ $pro->ville }}
 											</p>
 										</div><!--/.packages-para-->
 										<div class="packages-para">
@@ -80,13 +80,13 @@
 											</p>
 											<ul>
 												
-												@foreach( $avocat->getCompetences()->get() as $competence)
+												@foreach( $pro->getCompetences()->get() as $competence)
 													<li>{{ $competence->competence }}</li>
 												@endforeach
 											</ul>
 										</div><!--/.packages-para-->
 										<div class="about-btn">
-											<button onclick="location.href='/Avocats/{{ $avocat->id }}'" class="about-view packages-btn">
+											<button onclick="location.href='/professionnels/{{ $pro->id }}'" class="about-view packages-btn">
 												En savoir plus
 											</button>
 										</div><!--/.about-btn-->

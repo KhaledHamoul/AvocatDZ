@@ -20,15 +20,16 @@ class CreateCompetence extends Migration
             $table->string('description')->nullable();
             $table->integer('profile_id')->unsigned();
             $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->timestamps();
         });
         
-        Schema::create('avocat_competences', function (Blueprint $table) {
+        Schema::create('professionnels_competences', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('competence_id')->unsigned();
-            $table->integer('avocat_id')->unsigned();
+            $table->integer('professionnel_id')->unsigned();
             $table->timestamps(); 
             $table->foreign('competence_id')->references('id')->on('competences');
-            $table->foreign('avocat_id')->references('id')->on('avocats');
+            $table->foreign('professionnel_id')->references('id')->on('professionnels');
         });
     }
 

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Professionnel;
 use App\User;
 
-class checkAvocat
+
+class checkProfessionnel
 {
     /**
      * Handle an incoming request.

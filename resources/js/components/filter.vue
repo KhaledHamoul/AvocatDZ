@@ -1,5 +1,5 @@
 <template>				
-	<form method="post" action="/Avocats">
+	<form method="post" action="/professionnels">
 		<div class="row">
 			<input type="hidden" name="_token" :value="csrf">
 

@@ -29,7 +29,7 @@
 								<div class="collapse navbar-collapse">		  
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/">Accueil</a></li>
-										<li><a href="/Avocats">Avocats</a></li>
+										<li><a href="/professionnels">Avocats</a></li>
 										<li><a href="#pack">Blog </a></li>
 										<li><a href="#spo">FAQ</a></li>
 										@auth

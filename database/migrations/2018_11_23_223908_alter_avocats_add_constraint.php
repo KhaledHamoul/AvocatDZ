@@ -15,7 +15,7 @@ class AlterAvocatsAddConstraint extends Migration
     {
         //
 
-        Schema::table('avocats', function (Blueprint $table) {
+        Schema::table('professionnels', function (Blueprint $table) {
             $table->integer('profile_id')->unsigned();
             $table->foreign('profile_id')->references('id')->on('profiles');
         });
