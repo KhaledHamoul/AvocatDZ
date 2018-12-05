@@ -17,6 +17,7 @@ class CreateRdv extends Migration
         Schema::create('rdvs', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('reponse')->default(false);
+            $table->string('message');
             $table->integer('professionnel_id')->unsigned();
             $table->integer('client_id')->unsigned();
             $table->timestamps();

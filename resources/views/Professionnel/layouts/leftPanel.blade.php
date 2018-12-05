@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li>
                         <a href="/accueil_professionnel"><i class="menu-icon fa fa-laptop"></i>Accueil </a>
                     </li>
                     <li class="menu-title">Mes clients</li>

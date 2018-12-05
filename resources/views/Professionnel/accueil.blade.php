@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
     @include('Professionnel.layouts.head')
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
 <body>
@@ -23,11 +24,11 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
-                                        <i class="pe-7s-cash"></i>
+                                        <i class="far fa-calendar-alt"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">$<span class="count">23569</span></div>
+                                            <div class="stat-text"><span class="count">{{ count($professionnel->rendezVous) }}</span></div>
                                             <div class="stat-heading">Rendez-vous</div>
                                         </div>
                                     </div>
@@ -41,11 +42,11 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                        <i class="far fa-eye"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{ $visites }}</span></div>
                                             <div class="stat-heading">Visistes</div>
                                         </div>
                                     </div>
@@ -59,7 +60,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-browser"></i>
+                                        <i class="far fa-comment-alt"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -77,7 +78,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-4">
-                                        <i class="pe-7s-users"></i>
+                                        <i class="far fa-newspaper"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">

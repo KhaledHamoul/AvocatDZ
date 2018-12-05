@@ -1,4 +1,4 @@
-<div id="filtre">
+
     <!--Choisir avocat start-->
     <section  class="choisir-avocat" >
         <div class="container">
@@ -18,7 +18,9 @@
                             <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active fade in" id="tours">
                                 <div class="tab-para">
+                                <div id="vue-components">
                                     <filtre></filtre>
+                                </div>
                                 </div><!--/.tab-para-->
                                 </div><!--/.tabpannel-->
                             </div><!--/.tab content-->
@@ -29,4 +31,3 @@
         </div><!--/.container-->
     </section><!--/.travel-box-->
     <!--Choisir avocat end-->
-</div>  

@@ -123,9 +123,66 @@
 										</div><!--/.packages-para-->
 										<div class="about-btn">
 											@if($rdv_show)
-											<button onclick="location.href='/professionnel/{{ $professionnel->id }}'" class="about-view packages-btn">
-												Rendez-vous
-											</button>
+												<!-- toggle button -->
+												<button class="about-view packages-btn" data-toggle="modal" data-target="#rdv_modal">Rendez-vous</button>				
+												<!-- End toggle button -->
+												<!-- Info Client Model-->
+												<div class="modal fade" id="rdv_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+													<div class="modal-dialog" style="z-index:200;" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<div class="row">
+																	<div class="col-sm-6">
+																		<h4>Prendre un rendez-vous</h4>
+																	</div>
+																	<div class="col-sm-6">
+																		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																		</button>
+																	</div>
+																</div>
+															</div>
+															<form action="/rendezvous" method="post">
+																@csrf
+																<div class="modal-body">
+																	<div class="container-fluid" >
+																		<div class="content col-sm-8" style="margin:0 16.6% 0 16.6% ">
+																			<div class="row"> 
+																				<div class="col-sm-12">
+																					<div class="single-tab-select-box">
+																						<h2>Message</h2>
+																						<div class="register-input">
+																							<input style="height:100px" name="Message" type="text" class="form-control" placeholder="Message" >
+																						</div><!-- /.travel-select-icon -->
+																					</div><!--/.single-tab-select-box-->
+																				</div><!--/.col-->
+																				<div class="col-sm-12">
+																					<div class="single-tab-select-box">
+																						<h2>Joindre un fichier</h2>
+																						<div class="register-input">
+																							<input  name="fichier" type="file" class="form-control"  >
+																						</div><!-- /.travel-select-icon -->
+																					</div><!--/.single-tab-select-box-->
+																				</div><!--/.col-->
+																				<input type="hidden" name="pro_id" valaue="{{ $professionnel->id }}"> 
+																				<div class="col-sm-12">
+																					<div class="single-tab-select-box">
+																						<div class="register-input">
+																						<button type="submit" class="btn btn-default dropdown-toggle">valider</button>
+																						</div><!-- /.travel-select-icon -->
+																					</div><!--/.single-tab-select-box-->
+																				</div><!--/.col-->
+																			</div> 
+																		</div>      
+																	</div>
+																</div>
+															</form>
+															<div class="modal-footer">
+															</div>
+														</div>
+													</div>
+												</div>	
+												<!-- End Info Client Model-->
 											@endif
 										</div><!--/.about-btn-->
 									</div><!--/.single-package-item-txt-->
@@ -138,6 +195,8 @@
 
 		</section><!--/.packages-->
 		<!--packages end-->
+
+		
 
         @include('Vitrine.layouts.footer')
     </body>

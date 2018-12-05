@@ -10,6 +10,7 @@ use App\Profile;
 use App\Client;
 use App\Visite;
 use App\VisiteInconnu;
+use App\Rdv;
 
 class vitrineController extends Controller
 {
@@ -68,21 +69,28 @@ class vitrineController extends Controller
     public function getProfessionnelInfo( $id ){
         $pros = Professionnel::find($id);
         $rdv_show = false;
-        $client = Client::where('user_id',Auth::id())->get();
-
-        if( $client->count() > 0 ){
-            $rdv_show = true;
-            Visite::create([
-                'professionnel_id' => $id,
-                'client_id' => $client[0]->id,
-            ]);
-        } 
+        if (Auth::check()) {
+            $client = Client::where('user_id',Auth::id())->get();
+            if( $client->count() > 0 ){
+                $rdv_show = true;
+                Visite::create([
+                    'professionnel_id' => $id,
+                    'client_id' => $client[0]->id,
+                ]);
+            } 
+        }
         else {
             VisiteInconnu::create([
                 'professionnel_id' => $id,
             ]);
         }
         return view('Vitrine.professionnel_info',['professionnel' => $pros , 'rdv_show' => $rdv_show]);
+    }
+
+    public function rendezvous(Request $data){
+        Client::where( 'user_id' , $data['user_id']);
+        //Rdv::create(['reponse' => 0, 'professionnel_id' => $data['pro_id'] ,'client_id' ,'message']);
+        return redirect()->back();
     }
 }
 

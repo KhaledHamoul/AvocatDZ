@@ -11,4 +11,8 @@ class Visite extends Model
         'professionnel_id', 
         'client_id', 
     ];
+
+    public function client(){
+        return $this->belongsTo('App\Client','client_id');
+    }
 }

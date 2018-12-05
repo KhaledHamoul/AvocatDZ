@@ -6,10 +6,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Avocat;
+use App\Professionnel;
 use App\User;
 use App\Profile;
 use App\AvocatDomaine;
+use App\Visite;
+use App\VisiteInconnu;
+use App\Rdv;
+
 
 class ProfessionnelController extends Controller
 {
@@ -50,11 +54,20 @@ class ProfessionnelController extends Controller
     }
 
     public function index(){
-        return view('Professionnel.accueil');
+        $userID = Auth::id();
+        $pro = Professionnel::where('user_id',$userID)->first();
+        $visites = count( Visite::where('professionnel_id',$pro->id)->get()) + count( VisiteInconnu::where('professionnel_id',$pro->id)->get());
+        
+        $params = ['professionnel' => $pro , 'visites' => $visites];
+        return view('Professionnel.accueil',$params);
     }
 
     public function rdv(){
-        return view('Professionnel.rdv');
+        $userID = Auth::id();
+        $pro = Professionnel::where('user_id',$userID)->first();
+        $rdv = Rdv::where('professionnel_id',$pro->id)->get();
+        $params = ['rdv' => $rdv];
+        return view('Professionnel.rdv',$params);
     }
 
     public function avis(){
@@ -62,7 +75,12 @@ class ProfessionnelController extends Controller
     }
 
     public function visistes(){
-        return view('Professionnel.visistes');
+        $userID = Auth::id();
+        $pro = Professionnel::where('user_id',$userID)->first();
+        $visites = Visite::where('professionnel_id',$pro->id)->get();
+        $visitesInconnues = VisiteInconnu::where('professionnel_id',$pro->id)->get();
+        $params = ['visites' => $visites , 'visites_inconnues' => $visitesInconnues ];
+        return view('Professionnel.visistes', $params );
     }
 
     public function articles(){

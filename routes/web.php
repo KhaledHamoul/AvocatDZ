@@ -22,6 +22,7 @@ Route::get('/professionnels', 'VitrineController@getProfessionnelsList');
 Route::get('/professionnels/{id}', 'VitrineController@getProfessionnelInfo');
 Route::post('/professionnels','VitrineController@getProfessionnelsListFilter');
 Route::get('/Inscription', 'VitrineController@register');
+Route::post('/rendezvous', 'VitrineController@rendezvous');
 
 
 // Avocats

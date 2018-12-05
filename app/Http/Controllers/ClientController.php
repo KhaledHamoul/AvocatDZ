@@ -36,7 +36,7 @@ class ClientController extends Controller
     public function login(Request $data){
         $credentials = $data->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/accueil_client');
+            return redirect()->intended('/');
         }
         return redirect('/login');
     }

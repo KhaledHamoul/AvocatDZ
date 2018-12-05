@@ -40,6 +40,9 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="{{ asset('Dashboard_assets/js/init/fullcalendar-init.js') }}"></script>
 
+    <!--Vue JS-->
+    <script src="{{ asset('js/vue-config.js') }}"></script>
+
     <!--Local Stuff-->
     <script>
         jQuery(document).ready(function($) {

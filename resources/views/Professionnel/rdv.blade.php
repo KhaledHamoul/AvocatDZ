@@ -22,12 +22,12 @@
                             <strong class="card-title">Demandes de rendez-vous</strong>
                         </div>
                         <div class="table-stats order-table ov-h">
+                            <div id="vue-components">   
                             <table class="table ">
                                 <thead>
                                     <tr>
-                                        <th class="serial">#</th>
-                                        <th class="avatar">Avatar</th>
                                         <th>ID</th>
+                                        <th class="avatar">Avatar</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Téléphone</th>
@@ -35,68 +35,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="serial">1.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5469 </td>
-                                        <td>  <span class="name">Louis Stanley</span> </td>
-                                        <td> <span class="product">iMax</span> </td>
-                                        <td><span class="tel">231</span></td>
-                                        <td>
-                                            <span class="badge badge-complete"><i class="fa fa-eye"></i></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">2.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5468 </td>
-                                        <td>  <span class="name">Gregory Dixon</span> </td>
-                                        <td> <span class="product">iPad</span> </td>
-                                        <td><span class="tel">250</span></td>
-                                        <td>
-                                            <span class="badge badge-complete"><i class="fa fa-eye"></i></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5467 </td>
-                                        <td>  <span class="name">Catherine Dixon</span> </td>
-                                        <td> <span class="product">SSD</span> </td>
-                                        <td><span class="tel">250</span></td>
-                                        <td>
-                                            <span class="badge badge-complete"><i class="fa fa-eye"></i></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">4.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}   " alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td> #5466 </td>
-                                        <td>  <span class="name">Mary Silva</span> </td>
-                                        <td> <span class="product">Magic Mouse</span> </td>
-                                        <td><span class="tel">250</span></td>
-                                        <td>
-                                            <span class="badge badge-pending"><i class="fa fa-eye"></i></span>
-                                        </td>
-                                    </tr>
+                                    @foreach( $rdv as $item )
+                                        <tr>
+                                            <td> {{ $item->id }} </td>
+                                            <td class="avatar">
+                                                <div class="round-img">
+                                                    <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
+                                                </div>
+                                            </td>
+                                            <td>  <span class="name">{{ $item->client->nom }}</span> </td>
+                                            <td> <span class="product">{{ $item->client->prenom }}</span> </td>
+                                            <td> <span class="product">{{ $item->client->ville }}</span> </td>                                            
+                                            <td>
+                                                <info-client client-id="{{ $item->client->id }}"></info-client>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div> <!-- /.table-stats -->
                     </div>
                 </div> 
@@ -105,7 +62,12 @@
             <!-- .animated -->
         </div>
         <!-- /.content -->
+
         <div class="clearfix"></div>
+       
+     
      @include('professionnel.layouts.footer')
+
+   
 </body>
 </html>

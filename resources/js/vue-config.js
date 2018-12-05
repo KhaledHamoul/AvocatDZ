@@ -19,7 +19,9 @@ window.Vue = require('vue');
 Vue.component('filtre', require('./components/filter.vue'));
 Vue.component('profile', require('./components/profile.vue'));
 Vue.component('competences', require('./components/competences.vue'));
+Vue.component('info-client', require('./components/info-client.vue'));
 
 const app = new Vue({
-    el: '#filtre',
+    el: '#vue-components',
 });
+

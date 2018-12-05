@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/competences/{id}','ApiController@getCompetences');
+Route::get('/clients/{id}','ApiController@getClient');
 Route::get('/profiles','ApiController@getProfiles');

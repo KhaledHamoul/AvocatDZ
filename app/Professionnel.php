@@ -26,4 +26,8 @@ class Professionnel extends Model
     {
         return $this->belongsToMany('App\Competence','professionnels_competences','professionnel_id','competence_id');
     }
+    public function rendezVous()
+    {
+        return $this->hasMany('App\Rdv','professionnel_id','id');
+    }
 }
