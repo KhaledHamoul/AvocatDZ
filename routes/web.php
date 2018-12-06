@@ -52,6 +52,18 @@ Route::get('/Admin','AdminController@index')->middleware('auth','checkAdmin');
 Route::get('/rdv_admin','AdminController@rdv')->middleware('auth','checkAdmin');
 Route::get('/compte_admin','AdminController@compte')->middleware('auth','checkAdmin');
 
+//Blog
+Route::get('/blog',[
+    'uses' => 'AnnouncementsController@index',
+    'as'=> 'blog'
+]);
+
+Route::get('/blog/article/article-{slug}',[
+    'uses' => 'AnnouncementsController@single',
+    'as' => 'blog-single'
+]);
+
+
 Route::get('/test', 'VitrineController@test');
 
 Auth::routes();
@@ -59,10 +71,3 @@ Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-
-
-//Autres
-Route::get('/blog/article/article-{slug}',[
-    'uses' => 'AnnouncementsController@single',
-    'as' => 'blog-single'
-]);

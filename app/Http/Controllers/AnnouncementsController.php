@@ -8,12 +8,12 @@ use App\Announcement;
 class AnnouncementsController extends Controller
 {
     public function index(){
-        $announcements = Announcement::where('id','>','0')->paginate(3);
-        return view('contents/blog_content')->with('announcements',$announcements);
+        $articles = Announcement::where('id','>','0')->paginate(3);
+        return view('Blog.blog')->with('articles',$articles);
     }
 
     public function single($slug){
-        $announcement = Announcement::where('slug',$slug)->first();
-        return view('contents/blog_content_single')->with('announcement',$announcement);
+        $article = Announcement::where('slug',$slug)->first();
+        return view('Blog.blog_single')->with('article',$article);
     }
 }

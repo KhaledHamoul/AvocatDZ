@@ -139,9 +139,9 @@
 														{{$article->title}}
 													</a>
 												</h3>
-												<p>
+												<div>
 													{!! str_limit(html_entity_decode($article->content), 400) !!}
-												</p>
+												</div>
 												<a href="{{route('blog-single',['slug' => $article->slug])}}">Lire la suite ...</a>
 											</div><!--/.blog-txt-->
 										</div><!--/.caption-->
