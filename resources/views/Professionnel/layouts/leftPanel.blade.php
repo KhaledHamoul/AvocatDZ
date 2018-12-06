@@ -21,6 +21,9 @@
                     <li>
                         <a href="/articles_professionnel"><i class="menu-icon fa fa-file-text-o"></i>Mes Articles </a>
                     </li>
+                    <li>
+                        <a href="/creer_article_professionnel"><i class="menu-icon fa fa-file-text-o"></i>Créer Article</a>
+                    </li>
                     <li class="menu-title">Autres</li>
                     <li>
                         <a href="/compte_professionnel"><i class="menu-icon fa fa-cog"></i>Mon compte </a>

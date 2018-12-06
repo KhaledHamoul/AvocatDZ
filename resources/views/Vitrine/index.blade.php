@@ -122,12 +122,12 @@
 						</div><!--/.gallery-header-->
 						<div class="blog-content">
 							<div class="row">
-
+								@foreach($derniers_articles as $article)
 								<div class="col-sm-4 col-md-4">
 									<div class="thumbnail">
-										<h2>AvocatDZ <span>15 november 2017</span></h2>
+										<h2>{{$article->author->name}} <span>{{date('d-m-Y',strtotime($article->posted_at))}}</span></h2>
 										<div class="thumbnail-img">
-											<img src="{{ asset('Vitrine_assets/images/blog/b1.jpg') }}" alt="blog-img">
+											<img src="{{asset('store/' . $article->img)}}" alt="blog-img">
 											<div class="thumbnail-img-overlay"></div><!--/.thumbnail-img-overlay-->
 										
 										</div><!--/.thumbnail-img-->
@@ -136,65 +136,18 @@
 											<div class="blog-txt">
 												<h3>
 													<a href="#">
-														Comment choisir son avocat
+														{{$article->title}}
 													</a>
 												</h3>
-												<p>
-													Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam 
-												</p>
-												<a href="#">Lire la suite ...</a>
+												<div>
+													{!! str_limit(html_entity_decode($article->content), 400) !!}
+												</div>
+												<a href="{{route('blog-single',['slug' => $article->slug])}}">Lire la suite ...</a>
 											</div><!--/.blog-txt-->
 										</div><!--/.caption-->
 									</div><!--/.thumbnail-->
-
 								</div><!--/.col-->
-
-								<div class="col-sm-4 col-md-4">
-									<div class="thumbnail">
-										<h2>AvocatDZ <span>15 november 2017</span></h2>
-										<div class="thumbnail-img">
-											<img src="{{ asset('Vitrine_assets/images/blog/b2.jpg') }}" alt="blog-img">
-											<div class="thumbnail-img-overlay"></div><!--/.thumbnail-img-overlay-->
-										
-										</div><!--/.thumbnail-img-->
-										<div class="caption">
-											<div class="blog-txt">
-												<h3>
-													<a href="#">
-														C'est quoi le code pénal
-													</a>
-												</h3>
-												<p>
-													orem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam 
-												</p>
-												<a href="#">Lire la suite ...</a>
-											</div><!--/.blog-txt-->
-										</div><!--/.caption-->
-									</div><!--/.thumbnail-->
-
-								</div><!--/.col-->
-
-								<div class="col-sm-4 col-md-4">
-									<div class="thumbnail">
-										<h2>AvocatDZ <span>15 november 2017</span></h2>
-										<div class="thumbnail-img">
-											<img src="{{ asset('Vitrine_assets/images/blog/b3.jpg') }}" alt="blog-img">
-											<div class="thumbnail-img-overlay"></div><!--/.thumbnail-img-overlay-->
-										
-										</div><!--/.thumbnail-img-->
-										<div class="caption">
-											<div class="blog-txt">
-												<h3><a href="#">Divorce en ALgérie</a></h3>
-												<p>
-													Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam 
-												</p>
-												<a href="#">Lire la suite ...</a>
-											</div><!--/.blog-txt-->
-										</div><!--/.caption-->
-									</div><!--/.thumbnail-->
-
-								</div><!--/.col-->
-
+								@endforeach
 							</div><!--/.row-->
 						</div><!--/.blog-content-->
 					</div><!--/.blog-details-->

@@ -27,4 +27,10 @@ class User extends \TCG\Voyager\Models\User
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function posts()
+    {
+        return $this->hasMany(Announcement::class, 'author_id');
+    }
 }
