@@ -34,6 +34,8 @@ Route::get('/avis_professionnel','ProfessionnelController@avis')->middleware('au
 Route::get('/visites_professionnel','ProfessionnelController@visistes')->middleware('auth','checkAvocat');
 Route::get('/articles_professionnel','ProfessionnelController@articles')->middleware('auth','checkAvocat');
 Route::get('/compte_professionnel','ProfessionnelController@compte')->middleware('auth','checkAvocat');
+Route::get('/creer_article_professionnel','ProfessionnelController@creerArticle')->middleware('auth','checkAvocat');
+Route::post('/store_article_professionnel','ProfessionnelController@storeArticle')->middleware('auth','checkAvocat');
 
 //client
 Route::post('/register_client', 'ClientController@register');
@@ -57,3 +59,10 @@ Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+//Autres
+Route::get('/blog/article/article-{slug}',[
+    'uses' => 'AnnouncementsController@single',
+    'as' => 'blog-single'
+]);

@@ -11,6 +11,7 @@ use App\Client;
 use App\Visite;
 use App\VisiteInconnu;
 use App\Rdv;
+use App\Announcement;
 
 class vitrineController extends Controller
 {
@@ -19,7 +20,9 @@ class vitrineController extends Controller
         return public_path();
     }
     public function index(){
-        return view('Vitrine.index');
+        $articles = Announcement::orderBy('id','desc')->take(3)->get();
+        return view('Vitrine.index')
+        ->with('derniers_articles',$articles);
     }
 
     public function getProfessionnelsList(){

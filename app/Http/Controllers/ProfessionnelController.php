@@ -13,6 +13,9 @@ use App\AvocatDomaine;
 use App\Visite;
 use App\VisiteInconnu;
 use App\Rdv;
+use App\Category;
+use App\Announcement;
+use Carbon\Carbon;
 
 
 class ProfessionnelController extends Controller
@@ -84,10 +87,43 @@ class ProfessionnelController extends Controller
     }
 
     public function articles(){
-        return view('Professionnel.articles');
+        return view('Professionnel.articles')
+        ->with('articles',Announcement::where('author_id',Auth::id())->get());
     }
 
     public function compte(){
         return view('Professionnel.compte');
+    }
+
+    public function creerArticle(){
+        return view('Professionnel.creer_article')
+        ->with('categories',Category::all());
+    }
+
+    public function storeArticle(Request $request){
+        $this->validate($request,[
+            'titre' => 'required',
+            'contenu' => 'required',
+            'image' => 'required|image',
+            'category' => 'required'
+        ]);
+
+
+        $img = $request->image;
+        $image_identical_name = time() . $img->getClientOriginalName();
+        $img->move('store/', $image_identical_name);
+
+        Announcement::create([
+            'author_id' => Auth::id(),
+            'category_id' => $request->category,
+            'title' => $request->titre,
+            'content' => $request->contenu,
+            'img' => $image_identical_name,
+            'slug' => str_slug($request->titre),
+            'posted_at' => Carbon::now()
+        ]);
+
+        return view('Professionnel.articles')
+        ->with('articles',Announcement::where('author_id',Auth::id())->get());
     }
 }

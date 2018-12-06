@@ -33,58 +33,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $i = 0 ?>
+                                    @foreach($articles as $article)
                                     <tr>
-                                        <td class="serial">1.</td>
+                                        <td class="serial">{{$i++}}.</td>
                                         <td class="avatar">
                                             <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
+                                                <a href="#"><img class="rounded-circle" src="{{asset('store/' . $article->author->avatar)}}" alt=""></a>
                                             </div>
                                         </td>
-                                        <td>  <span class="name">Louis Stanley</span> </td>
-                                        <td>  <span class="name">15/11/2017</span> </td>
+                                        <td>  <span class="name">{{$article->title}}</span> </td>
+                                        <td>  <span class="name">{{date('d-m-Y',strtotime($article->posted_at))}}</span> </td>
                                         <td>
                                             <span class="badge badge-complete"><i class="fa fa-file-text-o"></i></span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="serial">2.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td>  <span class="name">Gregory Dixon</span> </td>
-                                        <td>  <span class="name">15/11/2017</span> </td>
-                                        <td>
-                                            <span class="badge badge-complete"><i class="fa fa-file-text-o"></i></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td>  <span class="name">Catherine Dixon</span> </td>
-                                        <td>  <span class="name">15/11/2017</span> </td>
-                                        <td>
-                                            <span class="badge badge-complete"><i class="fa fa-file-text-o"></i></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">4.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}   " alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td>  <span class="name">Mary Silva</span> </td>
-                                        <td>  <span class="name">15/11/2017</span> </td>
-                                        <td>
-                                            <span class="badge badge-pending"><i class="fa fa-file-text-o"></i></span>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
