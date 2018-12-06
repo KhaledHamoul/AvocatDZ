@@ -16,7 +16,39 @@
         <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
-               
+                <div class="col-8 offset-2">
+                    <div class="card">
+                        <div class="card-header">Mon Compte</div>
+                        <div class="card-body card-block col-10 offset-1">
+                            <form action="#" method="post" class="">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Nom d'utilisateur</div>
+                                        <input type="text" id="username3" name="username3" class="form-control">
+                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Email</div>
+                                        <input type="email" id="email3" name="email3" class="form-control">
+                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Password</div>
+                                        <input type="password" id="password3" name="password3" class="form-control">
+                                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    </div>
+                                </div>
+                                <div class="form-actions form-group">
+                                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             
                
             <!-- /#add-category -->
