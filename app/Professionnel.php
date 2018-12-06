@@ -30,4 +30,9 @@ class Professionnel extends Model
     {
         return $this->hasMany('App\Rdv','professionnel_id','id');
     }
+
+
+    public function avis(){
+        return $this->hasMany(Review::class,'professionnel_id');
+    }
 }

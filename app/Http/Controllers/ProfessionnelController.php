@@ -75,7 +75,11 @@ class ProfessionnelController extends Controller
     }
 
     public function avis(){
-        return view('Professionnel.avis');
+        $userID = Auth::id();
+        $pro = Professionnel::where('user_id',$userID)->first();
+        $reviews = $pro->avis;
+        return view('Professionnel.avis')
+            ->with('reviews',$reviews);
     }
 
     public function visistes(){

@@ -33,58 +33,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $i = 0 ?>
+                                    @foreach ($reviews as $review)
                                     <tr>
-                                        <td class="serial">1.</td>
+                                        <td class="serial">{{$i++}}.</td>
                                         <td class="avatar">
                                             <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
+                                                <a href="#"><img class="rounded-circle" src="{{asset('store/' . $review->client->user->avatar)}}" alt=""></a>
                                             </div>
                                         </td>
-                                        <td>  <span class="name">Louis Stanley</span> </td>
-                                        <td><span class="tel">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur</span></td>
+                                        <td>  <span class="name">{{$review->client->user->name}}</span> </td>
+                                        <td><span class="tel">{{$review->avis}}</span></td>
                                         <td>
                                             <span class="badge badge-complete"><i class="fa fa-eye"></i></span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="serial">2.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td>  <span class="name">Gregory Dixon</span> </td>
-                                        <td><span class="tel">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur</span></td>
-                                        <td>
-                                            <span class="badge badge-complete"><i class="fa fa-eye"></i></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td>  <span class="name">Catherine Dixon</span> </td>
-                                        <td><span class="tel">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur</span></td>
-                                        <td>
-                                            <span class="badge badge-complete"><i class="fa fa-eye"></i></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">4.</td>
-                                        <td class="avatar">
-                                            <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}   " alt=""></a>
-                                            </div>
-                                        </td>
-                                        <td>  <span class="name">Mary Silva</span> </td>
-                                        <td> <span class="product">Magic Mouse</span> </td>
-                                        <td>
-                                            <span class="badge badge-pending"><i class="fa fa-eye"></i></span>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->

@@ -20,6 +20,15 @@ class CreateForeignKeys extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
 
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->integer('professionnel_id')->unsigned();
+            $table->foreign('professionnel_id')->references('id')->on('professionnels')->onDelete('cascade');
+            $table->integer('client_id')->unsigned()->unique();
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->integer('visite_id')->unsigned();
+            $table->foreign('visite_id')->references('id')->on('visites')->onDelete('cascade');
+        });
+
     }
 
     /**
@@ -34,6 +43,15 @@ class CreateForeignKeys extends Migration
             $table->dropColumn('author_id');
             $table->dropForeign(['category_id']);
             $table->dropColumn('category_id');
+        });
+
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->dropForeign(['professionnel_id']);
+            $table->dropColumn('professionnel_id');
+            $table->dropForeign(['client_id']);
+            $table->dropColumn('client_id');
+            $table->dropForeign(['visite_id']);
+            $table->dropColumn('visite_id');
         });
     }
 }

@@ -12,6 +12,7 @@ use App\Visite;
 use App\VisiteInconnu;
 use App\Rdv;
 use App\Announcement;
+use App\Review;
 
 class vitrineController extends Controller
 {
@@ -72,22 +73,35 @@ class vitrineController extends Controller
     public function getProfessionnelInfo( $id ){
         $pros = Professionnel::find($id);
         $rdv_show = false;
+        $curr_visite = null;
+        $review = null;
+        $has_review = false;
         if (Auth::check()) {
             $client = Client::where('user_id',Auth::id())->get();
             if( $client->count() > 0 ){
                 $rdv_show = true;
-                Visite::create([
+                $curr_visite = Visite::create([
                     'professionnel_id' => $id,
                     'client_id' => $client[0]->id,
                 ]);
-            } 
+            }
+            $review = $client[0]->avis;
+            if($review != null){
+                $has_review = true;
+            }
         }
         else {
             VisiteInconnu::create([
                 'professionnel_id' => $id,
             ]);
         }
-        return view('Vitrine.professionnel_info',['professionnel' => $pros , 'rdv_show' => $rdv_show]);
+        return view('Vitrine.professionnel_info',[
+            'professionnel' => $pros,
+            'rdv_show' => $rdv_show,
+            'curr_visite' => $curr_visite,
+            'has_review' => $has_review,
+            'review'=> $review
+            ]);
     }
 
     public function rendezvous(Request $data){
