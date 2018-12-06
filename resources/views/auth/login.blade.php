@@ -77,7 +77,7 @@
                             <li role="presentation" class="active">
 								<a href="#avocat" aria-controls="avocat" role="tab" data-toggle="tab">
 									<i class="fa fa-user"></i>
-									Avocat
+									Professionnel
 								</a>
 							</li>
 							<li role="presentation" >

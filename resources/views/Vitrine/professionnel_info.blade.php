@@ -164,7 +164,7 @@
 																						</div><!-- /.travel-select-icon -->
 																					</div><!--/.single-tab-select-box-->
 																				</div><!--/.col-->
-																				<input type="hidden" name="pro_id" valaue="{{ $professionnel->id }}"> 
+																				<input type="hidden" name="pro_id" value="{{ $professionnel->id }}" /> 
 																				<div class="col-sm-12">
 																					<div class="single-tab-select-box">
 																						<div class="register-input">

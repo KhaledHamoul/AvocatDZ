@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Professionnel;
@@ -77,7 +78,13 @@ class ProfessionnelController extends Controller
     public function visistes(){
         $userID = Auth::id();
         $pro = Professionnel::where('user_id',$userID)->first();
-        $visites = Visite::where('professionnel_id',$pro->id)->get();
+        //$visites = Visite::where('professionnel_id',$pro->id)->get();
+        $visites = DB::table('visites')->orderBy('client_id')
+                                    ->join('clients','clients.id','=','visites.client_id')
+                                    ->select('client_id', DB::raw('count(*) as nbr_visites,nom,prenom,ville'))
+                                    ->where('professionnel_id', $pro->id )
+                                    ->groupBy('client_id','nom','prenom','ville')
+                                    ->get();
         $visitesInconnues = VisiteInconnu::where('professionnel_id',$pro->id)->get();
         $params = ['visites' => $visites , 'visites_inconnues' => $visitesInconnues ];
         return view('Professionnel.visistes', $params );

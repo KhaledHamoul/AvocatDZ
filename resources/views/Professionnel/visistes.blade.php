@@ -71,25 +71,25 @@
                                             <th>Nom</th>
                                             <th>Prénom</th>
                                             <th>Téléphone</th>
-                                            <th>Date</th>
+                                            <th>Nombre de visites</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach( $visites as $item )
                                             <tr>
-                                                <td> {{ $item->id }} </td>
+                                                <td> {{ $item->client_id }} </td>
                                                 <td class="avatar">
                                                     <div class="round-img">
                                                         <a href="#"><img class="rounded-circle" src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt=""></a>
                                                     </div>
                                                 </td>
-                                                <td>  <span class="name">{{ $item->client->nom }}</span> </td>
-                                                <td> <span class="product">{{ $item->client->prenom }}</span> </td>
-                                                <td> <span class="product">{{ $item->client->ville }}</span> </td>                                            
-                                                <td> <span class="product">{{ $item->created_at }}</span> </td>
+                                                <td>  <span class="name">{{ $item->nom }}</span> </td>
+                                                <td> <span class="product">{{ $item->prenom }}</span> </td>
+                                                <td> <span class="product">{{ $item->ville }}</span> </td>                                            
+                                                <td> <span class="product">{{ $item->nbr_visites }}</span> </td>
                                                 <td>
-                                                    <info-client client-id="{{ $item->client->id }}"></info-client>
+                                                    <info-client client-id="{{ $item->client_id }}"></info-client>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -88,8 +88,8 @@ class vitrineController extends Controller
     }
 
     public function rendezvous(Request $data){
-        Client::where( 'user_id' , $data['user_id']);
-        //Rdv::create(['reponse' => 0, 'professionnel_id' => $data['pro_id'] ,'client_id' ,'message']);
+        $client = Client::where( 'user_id' , Auth::user()->id )->first();
+        Rdv::create(['reponse' => 0, 'professionnel_id' => $data['pro_id'] ,'client_id' => $client->id  ,'message' => $data['Message']]);
         return redirect()->back();
     }
 }
