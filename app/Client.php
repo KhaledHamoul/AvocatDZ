@@ -17,4 +17,13 @@ class Client extends Model
         'addresse',
         'user_id',
     ];
+
+
+    public function avis(){
+        return $this->hasOne(Review::class,'client_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

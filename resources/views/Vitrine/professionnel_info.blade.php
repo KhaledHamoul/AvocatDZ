@@ -33,6 +33,59 @@
             margin-bottom: 3px;
             margin-left: 30px;
         }
+
+
+		/* 5 stars rating */ 
+		#full-stars {
+
+			/* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+			.rating-group {
+			display: inline-flex !important;
+			}
+
+			/* make hover effect work properly in IE */
+			.rating__icon {
+			pointer-events: none !important;
+			}
+
+			/* hide radio inputs */
+			.rating__input {
+			position: absolute !important;
+			left: -9999px !important;
+			}
+
+			/* hide 'none' input from screenreaders */
+			.rating__input--none {
+			display: none !important
+			}
+
+			/* set icon padding and size */
+			.rating__label {
+			cursor: pointer !important;
+			padding: 0 0.1em !important;
+			font-size: 2rem !important;
+			}
+
+			/* set default star color */
+			.rating__icon--star {
+			color: orange !important;
+			}
+
+			/* if any input is checked, make its following siblings grey */
+			.rating__input:checked ~ .rating__label .rating__icon--star {
+			color: #ddd !important;
+			}
+
+			/* make all stars orange on rating group hover */
+			.rating-group:hover .rating__label .rating__icon--star {
+			color: orange !important;
+			}
+
+			/* make hovered input's following siblings grey on hover */
+			.rating__input:hover ~ .rating__label .rating__icon--star {
+			color: #ddd !important;
+			}
+		}
     </style>
     </head>
     <body>
@@ -50,9 +103,6 @@
 					<h2>
 						Information sur l'avocat
 					</h2>
-					
-					
-					
 				</div><!--/.gallery-header-->
 				<div class="packages-content">
 					<div class="row">
@@ -183,14 +233,107 @@
 													</div>
 												</div>	
 												<!-- End Info Client Model-->
-											@endif
+											@endif		
 										</div><!--/.about-btn-->
 									</div><!--/.single-package-item-txt-->
 								</div><!--/.single-package-item-->
 
-							</div><!--/.col-->                       
+							</div><!--/.col-->    
 					</div><!--/.row-->
 				</div><!--/.packages-content-->
+				@if($rdv_show)
+					@if ($has_review)
+					<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<form class="form-horizontal" action="{{route('review.update',['visite' => $curr_visite])}}" method="post">
+									<fieldset>
+									{{ csrf_field() }}
+									<!-- Textarea -->
+									<div class="form-group">
+									<label class="col-md-4 control-label" for="contenu">Avis</label>
+									@if($review != null)
+									<div class="col-md-8">                     
+										<textarea class="form-control" name="avis">{{$review->avis}}</textarea>
+									</div>
+									@else
+									<div class="col-md-8">                     
+											<textarea class="form-control" name="avis"></textarea>
+									</div>
+									@endif
+									</div>
+									<div class="form-group">
+									<label class="col-md-4 control-label" for="contenu">Rate</label>
+									<div class="col-md-8">                     
+										<div id="full-stars">
+											<div class="rating-group">
+												<input disabled checked class="rating__input rating__input--none" name="rate" id="rate-none" value="0" type="radio">
+												<label aria-label="1 star" class="rating__label" for="rate-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-1" value="1" type="radio">
+												<label aria-label="2 stars" class="rating__label" for="rate-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-2" value="2" type="radio">
+												<label aria-label="3 stars" class="rating__label" for="rate-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-3" value="3" type="radio">
+												<label aria-label="4 stars" class="rating__label" for="rate-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-4" value="4" type="radio">
+												<label aria-label="5 stars" class="rating__label" for="rate-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-5" value="5" type="radio">
+											</div>
+									</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-12 text-center" style="margin-top:100px;">
+												<input type="submit" class="btn btn-info" value="Modifier" id="ajouter_article" name="submit"
+												style="padding: 10px 2%; border-radius:4px;">
+										</div>
+									 </div>
+									<fieldset>
+								</form>
+							</div>
+						</div>
+					@else
+					<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<form class="form-horizontal" action="{{route('review.store',['visite' => $curr_visite])}}" method="post">
+									<fieldset>
+									{{ csrf_field() }}
+									<!-- Textarea -->
+									<div class="form-group">
+									<label class="col-md-4 control-label" for="contenu">Avis</label>
+									<div class="col-md-8">                     
+										<textarea class="form-control" name="avis"></textarea>
+									</div>
+									</div>
+									<div class="form-group">
+									<label class="col-md-4 control-label" for="contenu">Rate</label>
+									<div class="col-md-8">                     
+										<div id="full-stars">
+											<div class="rating-group">
+												<input disabled checked class="rating__input rating__input--none" name="rate" id="rate-none" value="0" type="radio">
+												<label aria-label="1 star" class="rating__label" for="rate-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-1" value="1" type="radio">
+												<label aria-label="2 stars" class="rating__label" for="rate-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-2" value="2" type="radio">
+												<label aria-label="3 stars" class="rating__label" for="rate-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-3" value="3" type="radio">
+												<label aria-label="4 stars" class="rating__label" for="rate-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-4" value="4" type="radio">
+												<label aria-label="5 stars" class="rating__label" for="rate-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-5" value="5" type="radio">
+											</div>
+									</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-12 text-center" style="margin-top:100px;">
+												<input type="submit" class="btn btn-danger" value="Ajouter" id="ajouter_article" name="submit"
+												style="padding: 10px 2%; border-radius:4px;">
+										</div>
+									 </div>
+									<fieldset>
+								</form>
+							</div>
+						</div>
+					@endif
+				@endif
 			</div><!--/.container-->
 
 		</section><!--/.packages-->

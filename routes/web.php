@@ -36,6 +36,9 @@ Route::get('/articles_professionnel','ProfessionnelController@articles')->middle
 Route::get('/compte_professionnel','ProfessionnelController@compte')->middleware('auth','checkAvocat');
 Route::get('/creer_article_professionnel','ProfessionnelController@creerArticle')->middleware('auth','checkAvocat');
 Route::post('/store_article_professionnel','ProfessionnelController@storeArticle')->middleware('auth','checkAvocat');
+Route::get('/avis_professionnel','ProfessionnelController@avis')->middleware('auth','checkAvocat');
+
+
 
 //client
 Route::post('/register_client', 'ClientController@register');
@@ -43,6 +46,7 @@ Route::post('/login_client', 'ClientController@login');
 Route::get('/accueil_client','ClientController@index')->middleware('auth','checkClient');
 Route::get('/rdv_client','ClientController@rdv')->middleware('auth','checkClient');
 Route::get('/compte_client','ClientController@compte')->middleware('auth','checkClient');
+
 
 //Admin
 Route::post('/register_admin', 'AdminController@register');
@@ -62,6 +66,19 @@ Route::get('/blog/article/article-{slug}',[
     'uses' => 'AnnouncementsController@single',
     'as' => 'blog-single'
 ]);
+
+//Reviews
+Route::post('/store_rating/{visite}',[
+    'uses' => 'ReviewsController@storeReview',
+    'as' => 'review.store'
+]);
+
+Route::post('/update_rating/{visite}',[
+    'uses' => 'ReviewsController@updateReview',
+    'as' => 'review.update'
+]);
+
+Route::post('/store_rating','ReviewsController@storeReview')->middleware('auth','checkClient');
 
 
 Route::get('/test', 'VitrineController@test');
