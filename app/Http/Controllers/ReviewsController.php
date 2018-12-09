@@ -11,7 +11,7 @@ class ReviewsController extends Controller
 {
     public function storeReview(Request $request,$visite){
         $curr_visite = Visite::find($visite);
-        Review::create([
+        $review = Review::create([
             'professionnel_id' => $curr_visite->professionnel_id,
             'client_id' => $curr_visite->client_id,
             'visite_id' => $curr_visite->id,
@@ -39,7 +39,7 @@ class ReviewsController extends Controller
         return view('Vitrine.professionnel_info')
                 ->with('has_review',true)
                 ->with('professionnel',Professionnel::find($curr_visite->professionnel_id))
-                ->with('client',client)
+                ->with('client',$client)
                 ->with('rdv_show',true)
                 ->with('curr_visite',$curr_visite)
                 ->with('review',$review);
