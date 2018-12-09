@@ -76,6 +76,7 @@ class vitrineController extends Controller
         $curr_visite = null;
         $review = null;
         $has_review = false;
+        $hidden = false;
         if (Auth::check()) {
             $client = Client::where('user_id',Auth::id())->get();
             if( $client->count() > 0 ){
@@ -85,9 +86,10 @@ class vitrineController extends Controller
                     'client_id' => $client[0]->id,
                 ]);
             }
-            $review = $client[0]->avis;
+            $review = Review::where('client_id',$client[0]->id)->where('professionnel_id',$id)->first();
             if($review != null){
                 $has_review = true;
+                $hidden = $review->hidden;
             }
         }
         else {
@@ -100,6 +102,7 @@ class vitrineController extends Controller
             'rdv_show' => $rdv_show,
             'curr_visite' => $curr_visite,
             'has_review' => $has_review,
+            'hidden' => $hidden,
             'review'=> $review
             ]);
     }

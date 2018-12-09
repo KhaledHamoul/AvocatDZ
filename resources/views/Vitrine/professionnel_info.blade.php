@@ -242,7 +242,7 @@
 					</div><!--/.row-->
 				</div><!--/.packages-content-->
 				@if($rdv_show)
-					@if ($has_review)
+					@if ($has_review && !$hidden)
 					<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<form class="form-horizontal" action="{{route('review.update',['visite' => $curr_visite])}}" method="post">
@@ -288,9 +288,18 @@
 									 </div>
 									<fieldset>
 								</form>
+								<form class="form-horizontal" action="{{route('review.delete',['visite' => $curr_visite])}}" method="post">
+								{{ csrf_field() }}
+								<div class="form-group">
+									<div class="col-md-12 text-center" style="margin-top:100px;">
+										<input type="submit" name="submit" value="Supprimer" class="btn btn-danger" id="supprimer_article"
+										style="padding: 10px 2%; border-radius:4px;">
+									</div>
+								 </div>
+								</form>
 							</div>
 						</div>
-					@else
+					@elseif(!$hidden)
 					<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<form class="form-horizontal" action="{{route('review.store',['visite' => $curr_visite])}}" method="post">

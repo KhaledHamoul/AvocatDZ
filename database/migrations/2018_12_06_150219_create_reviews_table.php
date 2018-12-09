@@ -17,6 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->text('avis');
             $table->integer('rate');
+            $table->boolean('hidden')->default(false);
             $table->timestamps();
         });
     }

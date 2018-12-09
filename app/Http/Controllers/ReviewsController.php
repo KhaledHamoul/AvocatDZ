@@ -18,11 +18,12 @@ class ReviewsController extends Controller
             'avis' => $request->avis,
             'rate' => $request->rate
         ]);
-        return view('Vitrine.professionnel_info')
+        return redirect()->back()
                 ->with('has_review',true)
                 ->with('professionnel',Professionnel::find($curr_visite->professionnel_id))
                 ->with('client',Client::find($curr_visite->client_id))
                 ->with('rdv_show',true)
+                ->with('hidden',$review->hidden)
                 ->with('curr_visite',$curr_visite)
                 ->with('review',$review);
     }
@@ -31,17 +32,34 @@ class ReviewsController extends Controller
     public function updateReview(Request $request,$visite){
         $curr_visite = Visite::find($visite);
         $client = Client::find($curr_visite->client_id);
-        $review = $client->avis;
+        $review = Review::where('client_id',$client->id)->where('professionnel_id',$curr_visite->professionnel_id)->first();
         $review->avis = $request->avis;
         $review->rate = $request->rate;
         $review->visite_id = $curr_visite->id;
         $review->update();
-        return view('Vitrine.professionnel_info')
+        return redirect()->back()
                 ->with('has_review',true)
                 ->with('professionnel',Professionnel::find($curr_visite->professionnel_id))
                 ->with('client',$client)
                 ->with('rdv_show',true)
+                ->with('hidden',$review->hidden)
                 ->with('curr_visite',$curr_visite)
                 ->with('review',$review);
+    }
+
+
+    public function deleteReview(Request $request,$visite){
+        $curr_visite = Visite::find($visite);
+        $client = Client::find($curr_visite->client_id);
+        $review = Review::where('client_id',$client->id)->where('professionnel_id',$curr_visite->professionnel_id)->first();
+        $review->delete();
+        return redirect()->back()
+            ->with('has_review',false)
+            ->with('professionnel',Professionnel::find($curr_visite->professionnel_id))
+            ->with('client',$client)
+            ->with('rdv_show',true)
+            ->with('hidden',$review->hidden)
+            ->with('curr_visite',$curr_visite)
+            ->with('review',$review);
     }
 }

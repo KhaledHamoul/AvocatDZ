@@ -23,8 +23,9 @@ class CreateForeignKeys extends Migration
        Schema::table('reviews', function (Blueprint $table) {
             $table->integer('professionnel_id')->unsigned();
             $table->foreign('professionnel_id')->references('id')->on('professionnels')->onDelete('cascade');
-            $table->integer('client_id')->unsigned()->unique();
+            $table->integer('client_id')->unsigned();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->unique(['professionnel_id','client_id']);
             $table->integer('visite_id')->unsigned();
             $table->foreign('visite_id')->references('id')->on('visites')->onDelete('cascade');
         });

@@ -78,6 +78,11 @@ Route::post('/update_rating/{visite}',[
     'as' => 'review.update'
 ]);
 
+Route::post('/delete_rating/{visite}',[
+    'uses' => 'ReviewsController@deleteReview',
+    'as' => 'review.delete'
+]);
+
 Route::post('/store_rating','ReviewsController@storeReview')->middleware('auth','checkClient');
 
 

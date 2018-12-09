@@ -20,7 +20,7 @@ class Client extends Model
 
 
     public function avis(){
-        return $this->hasOne(Review::class,'client_id');
+        return $this->hasMany(Review::class,'client_id');
     }
 
     public function user(){
