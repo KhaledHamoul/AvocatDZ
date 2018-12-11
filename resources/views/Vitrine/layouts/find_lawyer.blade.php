@@ -1,33 +1,21 @@
 
-    <!--Choisir avocat start-->
-    <section  class="choisir-avocat" >
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="single-travel-boxes">
-                        <div id="desc-tabs" class="desc-tabs">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="#tours" aria-controls="tours" role="tab" data-toggle="tab">
-                                        <i class="fa fa-tree"></i>
-                                        Choisissez votre avocat
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active fade in" id="tours">
-                                <div class="tab-para">
-                                <div id="vue-components">
-                                    <filtre></filtre>
-                                </div>
-                                </div><!--/.tab-para-->
-                                </div><!--/.tabpannel-->
-                            </div><!--/.tab content-->
-                        </div><!--/.desc-tabs-->
-                    </div><!--/.single-travel-box-->
-                </div><!--/.col-->
-            </div><!--/.row-->
-        </div><!--/.container-->
-    </section><!--/.travel-box-->
-    <!--Choisir avocat end-->
+ <div class="advance-search">
+     <form method="post" action="/professionnels">
+        @csrf
+        <div class="group-button-search">
+            <!--
+                <a data-toggle="collapse***" href=".search-propertie-filters" class="more-filter"> <i class="fa fa-bars" aria-hidden="true"></i> </a>
+            -->
+            <a><i class="fa fa-bars" aria-hidden="true"></i> </a>
+        </div>
+        <div id="vue-components" class="dir-search">
+            <filtre></filtre>
+        </div>
+        <div class="search-btn">
+            <button>Trouver <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+</div>
+                                    
+                               

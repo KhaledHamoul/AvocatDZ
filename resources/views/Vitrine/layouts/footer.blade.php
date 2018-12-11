@@ -1,108 +1,182 @@
 
-		<!-- footer-copyright start -->
-		<footer  class="footer-copyright">
-			<div class="container">
-				<div class="footer-content">
-					<div class="row">
+<!-- Footer -->
+<footer id="footer">
+  <div class="container">
 
-						<div class="col-md-4 col-sm-3">
-							<div class="single-footer-item">
-								<div class="footer-logo">
-									<a href="index.html">
-										Avocat<span>DZ</span>
-									</a>
-									<p>
-										find your lawyer
-									</p>
-								</div>
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
+      <div class="row">
 
-						<div class="col-md-4 col-sm-3">
-							<div class="single-footer-item">
-								<h2>Liens</h2>
-								<div class="single-footer-txt">
-									<p><a href="#">Accueil</a></p>
-									<p><a href="#">Avocats</a></p>
-									<p><a href="#">Blog</a></p>
-									<p><a href="#">FAQ</a></p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="footer-about">
+                  <img src="images/logo.png" alt="image">
+                  <p>Lorem ipsum dolor amet consectur adipiscing elit sed do eiusmod tempor incididunt. Lorem ipsum dolor amet consectur adipiscing, Lorem ipsum dolor amet consectur adipiscing elit sed do eiusmod tempor incididunt...</p>
+                  <a href="about.html">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+              </div>
+          </div>
 
-						</div><!--/.col-->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="footer-links">
+                  <h3>Useful <span>Links</span></h3>
+                  <ul>
+                      <li><a href="index.html">Home</a>
+                      </li>
+                      <li><a href="listing-3.html">Browse Category</a>
+                      </li>
+                      <li><a href="index.html">Pages</a>
+                      </li>
+                      <li><a href="blog.html">Our Blog</a>
+                      </li>
+                      <li><a href="listing.html">Listing</a>
+                      </li>
+                      <li><a href="contact.html">Contact Us</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
 
-						
-						<div class="col-md-4 col-sm-4">
-							<div class="single-footer-item text-center">
-								<h2 class="text-left">contacts</h2>
-								<div class="single-footer-txt text-left">
-									<p>+(213) 1234 6543</p>
-									<p class="foot-email"><a href="#">info@avocat.dz</a></p>
-									<p>Alger, Algérie</p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="footer-links">
+                  <h3>Get in <span>Touch</span></h3>
+                  <ul>
+                      <li><a href="#"><span><i class="fa fa-phone" aria-hidden="true"></i></span> <span>+(10) 123 456 7896</span></a>
+                      </li>
+                      <li><a href="#"><span><i class="fa fa-envelope" aria-hidden="true"></i></span> <span>support@find_do.com</span></a>
+                      </li>
+                      <li><a href="#"><span><i class="fa fa-globe" aria-hidden="true"></i></span> <span>wwww.finddodirectory.com</span></a>
+                      </li>
+                      <li><a href="#"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span>Find Do, 06 Highley St, Victoria, Australia.</span></a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
 
-					</div><!--/.row-->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="footer-links">
+                  <h3>Latest <span>News</span></h3>
+                  <div class="footer-latest">
+                      <a href="#"><img src="images/footer-latest-1.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-2.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-3.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-4.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-5.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-6.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-7.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-8.jpg" alt="image">
+                      </a>
+                      <a href="#"><img src="images/footer-latest-9.jpg" alt="image">
+                      </a>
+                  </div>
+              </div>
+          </div>
 
-				</div><!--/.footer-content-->
-				<hr>
-				<div class="foot-icons ">
-					<ul class="footer-social-links list-inline list-unstyled">
-		                <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
-		                <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
-		                <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
-		        	</ul>
-		        	<p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+      </div>
 
-		        </div><!--/.foot-icons-->
-				<div id="scroll-Top">
-					<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
-				</div><!--/.scroll-Top-->
-			</div><!-- /.container-->
+      <div class="row">
+          <div class="col-md-12">
+              <div class="footer-newsletter">
+                  <span>Subscribe</span>
+                  <h2>to our newsletter</h2>
+                  <div class="sub-newsletter">
+                      <input type="email" name="email" placeholder="Enter your email address....">
+                      <button>Subscribe</button>
+                  </div>
+              </div>
+          </div>
+      </div>
 
-		</footer><!-- /.footer-copyright-->
-		<!-- footer-copyright end -->
+      <div class="row">
+          <div class="col-md-12 text-center">
+              <div class="footer-copyright">
+                  <p>Copyright 2017 - Find Do Directory All Rights Reserved. Designed by <a href="https://themeforest.net/user/99_design">99_Design.</a>
+                  </p>
+              </div>
+          </div>
+      </div>
 
+  </div>
+</footer>
+<!-- Footer -->
 
-		<!--Vue JS-->
-		<script src="{{ asset('js/vue-config.js') }}"></script>
+<!-- Popups -->
+<section id="best-thing-model">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">United State</h4>
+                  <ul class="best-things-listing">
+                      <li><a href="#">15 Cities,</a>
+                      </li>
+                      <li><a href="#">130 listings,</a>
+                      </li>
+                      <li><a href="#">View 6753</a>
+                      </li>
+                  </ul>
+                  <img src="images/stars-2.png" alt="image">
+              </div>
+              <div class="modal-body">
 
-		<script src="{{ ('/Vitrine_assets/js/jquery.js') }}"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <div id="best-thing-slider" class="owl-carousel owl-theme">
+                      <div class="item">
+                          <img src="images/best-thing-slider-1.jpg" alt="image">
+                      </div>
+                      <div class="item">
+                          <img src="images/best-thing-slider-1.jpg" alt="image">
+                      </div>
+                      <div class="item">
+                          <img src="images/best-thing-slider-1.jpg" alt="image">
+                      </div>
+                  </div>
 
-		<!--modernizr.min.js-->
-		<script  src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+                  <div class="row">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                          <div class="best-thing-model-description">
+                              <h4>Description</h4>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a pretium ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae tellus in nisl aliquam cursus. Etiam condimentum purus urna, quis fermentum felis finibus quis. Integer magna quam, accumsan ac purus at, ultricies sagittis metus. Nulla tincidunt commodo egestas Morbi in molestie dui, Aenean feugiat odio eu venenatis sollicitudin...! </p>
+                          </div>
+                      </div>
 
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                          <div class="best-thing-model-feature">
+                              <h4>Features</h4>
+                              <ul>
+                                  <li>Resturent (152,546)</li>
+                                  <li>Real Estate (35,366)</li>
+                                  <li>Sport (2,546)</li>
+                                  <li>Beauty & Spa (1,546)</li>
+                                  <li>Vehicles (2, 34, 546)</li>
+                                  <li>Shoping (2,546)</li>
+                                  <li>Industry (3,506)</li>
+                                  <li>Dating (12,546)</li>
+                                  <li>Jobs (22,546)</li>
+                                  <li>Other Services (24,567)</li>
+                              </ul>
+                          </div>
+                      </div>
 
-		<!--bootstrap.min.js-->
-		<script  src="{{ ('/Vitrine_assets/js/bootstrap.min.js') }}"></script>
+                  </div>
 
-		<!-- bootsnav js -->
-		<script src="{{ ('/Vitrine_assets/js/bootsnav.js') }}"></script>
+                  <div class="best-thing-model-description">
+                      <h4>Last Review</h4>
+                      <img src="images/stars-2.png" alt="image">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a pretium ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae tellus in nisl aliquam cursus. Etiam condimentum purus urna, quis fermentum felis finibus quis. Integer magna quam, accumsan ac purus at, ultricies sagittis metus. Nulla tincidunt commodo egestas Morbi in molestie dui, Aenean feugiat odio eu venenatis sollicitudin...! </p>
 
-		<!-- jquery.filterizr.min.js -->
-		<script src="{{ ('/Vitrine_assets/js/jquery.filterizr.min.js') }}"></script>
+                      <div class="best-thing-model-btn">
+                          <a href="listing-details.html">More Details</a>
+                      </div>
+                  </div>
 
-		<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
-		<!--jquery-ui.min.js-->
-        <script src="{{ ('/Vitrine_assets/js/jquery-ui.min.js') }}"></script>
-
-        <!-- counter js -->
-		<script src="{{ ('/Vitrine_assets/js/jquery.counterup.min.js') }}"></script>
-		<script src="{{ ('/Vitrine_assets/js/waypoints.min.js') }}"></script>
-
-		<!--owl.carousel.js-->
-        <script  src="{{ ('/Vitrine_assets/js/owl.carousel.min.js') }}"></script>
-
-        <!-- jquery.sticky.js -->
-		<script src="{{ ('/Vitrine_assets/js/jquery.sticky.js') }}"></script>
-
-        <!--datepicker.js-->
-        <script  src="{{ ('/Vitrine_assets/js/datepicker.js') }}"></script>
-
-		<!--Custom JS-->
-		<script src="{{ ('/Vitrine_assets/js/custom.js') }}"></script>
-
-		
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Popups -->

@@ -32,7 +32,7 @@ class vitrineController extends Controller
     }
     
     public function getProfessionnelsListFilter(Request $data){
-        
+
         if ( isset($data['profile'])) {
             $pro_profile = Professionnel::where('profile_id',$data['profile'])->get();
             if ( isset($data['competence'])) {
@@ -111,6 +111,18 @@ class vitrineController extends Controller
         $client = Client::where( 'user_id' , Auth::user()->id )->first();
         Rdv::create(['reponse' => 0, 'professionnel_id' => $data['pro_id'] ,'client_id' => $client->id  ,'message' => $data['Message']]);
         return redirect()->back();
+    }
+
+    function faq(){
+        return view('Vitrine.faq');
+    }
+
+    function nous(){
+        return view('Vitrine.about');
+    }
+
+    function contact(){
+        return view('Vitrine.contact');
     }
 }
 

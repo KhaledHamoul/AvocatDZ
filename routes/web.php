@@ -22,7 +22,11 @@ Route::get('/professionnels', 'VitrineController@getProfessionnelsList');
 Route::get('/professionnels/{id}', 'VitrineController@getProfessionnelInfo');
 Route::post('/professionnels','VitrineController@getProfessionnelsListFilter');
 Route::get('/Inscription', 'VitrineController@register');
+Route::get('/faq', 'VitrineController@faq');
+Route::get('/nous', 'VitrineController@nous');
+Route::get('/contact', 'VitrineController@contact');
 Route::post('/rendezvous', 'VitrineController@rendezvous');
+
 
 
 // Avocats

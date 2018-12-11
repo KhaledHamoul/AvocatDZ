@@ -3,33 +3,16 @@
     <head>
     @include('Vitrine.layouts.head')
     <style>
-        
-        .single-travel-boxes {
-          margin-top:100px;  
-          background-color: #fefefe;
-          margin-bottom: -60px;
-        }
-        .home-border {
-            border: none;
-        }
-        .single-package-item img {
-            width: 150px;
-            height:150px;
-            border-radius: 100%;
-            margin-left: 31%;
-            margin-top: 30px;
-            box-shadow: 0 0 20px rgba(0,0,0,.1);
-        }
-        .packages-para ul , li {
-            font-size: 14px;
-            color: #aaa;
-            font-family: 'Poppins', sans-serif;
-            margin-bottom: 10px;
-        }
-        .packages-para li {
-            margin-bottom: 3px;
-            margin-left: 30px;
-        }
+		.advance-search{
+			background: rgba(255,255,255,0.9);
+			clear: both;
+			height: 50px; 
+			padding: 0;
+			margin-top: 0; 
+		}
+		.zelect {
+			outline: none;
+		}
     </style>
     </head>
     <body>
@@ -38,71 +21,154 @@
             your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        @include('Vitrine.layouts.header')
+        @include('Vitrine.layouts.pro_header')
 
-        @include('Vitrine.layouts.find_lawyer')
-
-        <!--packages start-->
-		<section class="packages">
-			<div class="container">
-				<div class="gallary-header text-center">
-					<h2>
-						Avocats
-					</h2>
-					
+        <!-- Popular Listing -->
+		<section id="popular-listing" class="p_b70 p_t70">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 heading">
+					<h2>Liste <span> Professionnels</span></h2>
 					@if ( $professionnels->count() == 0 )
-						<p>Aucune avocat est trouvé pour cette requete. </p> 
+					<br>
+						<p>Aucune avocat n'est trouvé pour cette requete. </p> 
 					@endif
-					
-				</div><!--/.gallery-header-->
-				<div class="packages-content">
-					<div class="row">
-						@foreach( $professionnels as $pro)
-							<div class="col-md-4 col-sm-6">
-								<div class="single-package-item">
-									<img src="{{ asset('Vitrine_assets/images/client/testimonial2.jpg') }}" alt="package-place">
-									<div class="single-package-item-txt">
-										<h3>{{ $pro->nom }}</h3>
-										<div class="packages-para">
-											<p>
-												<i class="fa fa-angle-right"></i> &nbsp Avocat
-											</p>
-											<p>
-												<i class="fa fa-map-marker"></i> &nbsp  {{ $pro->addresse }}
-											</p>
-											<p>
-												<i class="fa fa-map"></i> &nbsp {{ $pro->ville }}
-											</p>
-										</div><!--/.packages-para-->
-										<div class="packages-para">
-											<p>
-												<i class="fa fa-angle-right"></i> &nbsp Spécialités
-											</p>
-											<ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9 col-sm-9 col-xs-12">
+					@if ( $professionnels->count() != 0 )
+					<div class="sort-by">
+						<div class="sort-category"> 
+							<ul class="nav nav-tabs sort-listing" role="tablist">
+								<li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-th" aria-hidden="true"></i></a>
+								</li>
+								<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+								</li>
+								<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					@endif
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane fade in active" id="profile">
+							<div class="row">
+								@foreach( $professionnels as $pro)
+									<div class="col-md-4 col-sm-6 col-xs-12"  onclick="location.href='/professionnels/{{ $pro->id }}'" style="cursor: pointer;">
+										<div class="popular-listing-box">
+											<div class="popular-listing-img">
+												<figure class="effect-ming"> <img src="{{ asset('vetrine_assets/images/popular-1.jpg') }}" alt="image">
+												</figure>
+											</div>
+											<div class="popular-listing-detail">
+												<h3><a href="/professionnels/{{ $pro->id }}">{{ $pro->nom }}</a></h3>
 												
-												@foreach( $pro->getCompetences()->get() as $competence)
-													<li>{{ $competence->competence }}</li>
-												@endforeach
-											</ul>
-										</div><!--/.packages-para-->
-										<div class="about-btn">
-											<button onclick="location.href='/professionnels/{{ $pro->id }}'" class="about-view packages-btn">
-												En savoir plus
-											</button>
-										</div><!--/.about-btn-->
-									</div><!--/.single-package-item-txt-->
-								</div><!--/.single-package-item-->
+												<p>
+													<i class="fa fa-angle-right"></i> &nbsp Spécialités
+												</p>
+												<ul>
+													<?php $i = 0 ; ?>
+													@foreach( $pro->getCompetences()->get() as $competence)
+														@if($i < 5 )
+															<li>{{ $competence->competence }}</li>
+															<?php $i++ ; ?>
+														@elseif($i == 5)
+															<li>...</li>
+														@endif
+													@endforeach
+												</ul>
+												
+												<br>
+											</div>
+											<div class="popular-listing-add"> <span><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $pro->ville }} </span> <span><img src="{{ asset('vetrine_assets/images/stars.png') }}" alt="image"></span> </div>
+										</div>
+									</div>
+								@endforeach
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="home">
+							<div class="row">
+								@foreach( $professionnels as $pro)
+									<div class="col-md-6 col-sm-6 col-xs-12" onclick="location.href='/professionnels/{{ $pro->id }}'" style="cursor: pointer;">
+										<div class="popular-listing-box">
+											<div class="popular-listing-img">
+												<figure class="effect-ming"> <img src="{{ asset('vetrine_assets/images/popular-1.jpg') }}" alt="image">
+												</figure>
+											</div>
+											<div class="popular-listing-detail">
+												<h3><a href="/professionnels/{{ $pro->id }}">{{ $pro->nom }}</a></h3>
+												<p>
+													<i class="fa fa-angle-right"></i> &nbsp Spécialités
+												</p>
+												<ul>
+													<?php $i = 0 ; ?>
+													@foreach( $pro->getCompetences()->get() as $competence)
+														@if($i < 5 )
+															<li>{{ $competence->competence }}</li>
+															<?php $i++ ; ?>
+														@elseif($i == 5)
+															<li>...</li>
+														@endif
+													@endforeach
+												</ul>
+												<br>
+											</div>
+											<div class="popular-listing-add"> <span><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $pro->ville }}</span> <span><img src="images/stars.png" alt="image"></span> </div>
+										</div>
+									</div>
+								@endforeach
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="messages">
+							<div class="row">
+								@foreach( $professionnels as $pro)
+									<div class="col-md-12"  onclick="location.href='/professionnels/{{ $pro->id }}'" style="cursor: pointer;">
+										<div class="popular-listing-box">
+											<div class="row">
+												<div class="col-md-5 col-sm-5 col-xs-12">
+													<div class="popular-listing-img">
+														<figure class="effect-ming"> <img src="{{ asset('vetrine_assets/images/popular-1.jpg') }}" alt="image">
+														</figure>
+													</div>
+												</div>
+												<div class="col-md-7 col-sm-7 col-xs-12">
+													<div class="popular-listing-detail">
+														<h3><a href="/professionnels/{{ $pro->id }}">{{ $pro->nom }}</a></h3>
+														<p>
+															<i class="fa fa-angle-right"></i> &nbsp Spécialités
+														</p>
+														<ul>
+															<?php $i = 0 ; ?>
+															@foreach( $pro->getCompetences()->get() as $competence)
+																@if($i < 5 )
+																	<li>{{ $competence->competence }}</li>
+																	<?php $i++ ; ?>
+																@elseif($i == 5)
+																	<li>...</li>
+																@endif
+															@endforeach
+														</ul>
+														<br>
+													</div>
+													<div class="popular-listing-add"> <span><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $pro->ville }}</span> <span><img src="images/stars.png" alt="image"></span> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								@endforeach
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+		<!-- Popular Listing -->
 
-							</div><!--/.col-->
-						@endforeach
-                        
-					</div><!--/.row-->
-				</div><!--/.packages-content-->
-			</div><!--/.container-->
-
-		</section><!--/.packages-->
-		<!--packages end-->
-
-        @include('Vitrine.layouts.footer')
+		@include('Vitrine.layouts.footer')
+		@include('Vitrine.layouts.js')
     </body>
 </html>
