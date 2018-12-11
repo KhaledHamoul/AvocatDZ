@@ -2,7 +2,7 @@
 <html lang="en">
 
 	<head>
-        @include('Blog.layouts.head')
+        @include('Vitrine.layouts.head')
         
 	</head>
 
@@ -12,7 +12,7 @@
 			your browser</a> to improve your experience and security.</p>
 		<![endif]-->
 
-    @include('Blog.layouts.header')
+    @include('Vitrine.layouts.header')
     
         <!-- Page Content -->
         <div class="container">
@@ -184,7 +184,7 @@
       </div>
       <!-- /.container -->
 
-		@include('Blog.layouts.footer')
+		@include('Vitrine.layouts.footer')
 
 
 	</body>
