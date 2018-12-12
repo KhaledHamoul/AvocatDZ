@@ -103,7 +103,11 @@ class ProfessionnelController extends Controller
     }
 
     public function compte(){
-        return view('Professionnel.compte');
+        $userID = Auth::id();
+        $pro = Professionnel::where('user_id',$userID)->first();
+        return view('Professionnel.compte')
+        ->with('pro',$pro)
+        ->with('pro_email',Auth::user()->email);
     }
 
     public function creerArticle(){
@@ -136,5 +140,18 @@ class ProfessionnelController extends Controller
 
         return view('Professionnel.articles')
         ->with('articles',Announcement::where('author_id',Auth::id())->get());
+    }
+
+
+    public function updatePro(Request $request,$id){
+        $pro = Professionnel::find($id);
+        $pro->nom = $request->nom;
+        $pro->prenom = $request->prenom;
+        $pro->telephone = $request->telephone;
+        $pro->description = $request->description;
+        $pro->addresse = $request->addresse;
+        $pro->ville = $request->ville;
+        $pro->lat = $request->lat;
+        $pro->lng = $request->lng;
     }
 }

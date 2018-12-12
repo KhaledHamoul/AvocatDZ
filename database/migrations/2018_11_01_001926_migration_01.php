@@ -23,8 +23,8 @@ class Migration01 extends Migration
             $table->string('addresse');
             $table->string('ville');
             $table->string('img_url');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('lat')->default('36.752887');
+            $table->string('lng')->default('3.042048');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')
