@@ -13,6 +13,7 @@ use App\VisiteInconnu;
 use App\Rdv;
 use App\Announcement;
 use App\Review;
+use App\Faq;
 
 class vitrineController extends Controller
 {
@@ -85,11 +86,12 @@ class vitrineController extends Controller
                     'professionnel_id' => $id,
                     'client_id' => $client[0]->id,
                 ]);
-            }
-            $review = Review::where('client_id',$client[0]->id)->where('professionnel_id',$id)->first();
-            if($review != null){
-                $has_review = true;
-                $hidden = $review->hidden;
+            
+                $review = Review::where('client_id',$client[0]->id)->where('professionnel_id',$id)->first();
+                if($review != null){
+                    $has_review = true;
+                    $hidden = $review->hidden;
+                }
             }
         }
         else {
@@ -114,7 +116,8 @@ class vitrineController extends Controller
     }
 
     function faq(){
-        return view('Vitrine.faq');
+        $faqs = Faq::all();
+        return view('Vitrine.faq',['faqs' => $faqs]);
     }
 
     function nous(){
