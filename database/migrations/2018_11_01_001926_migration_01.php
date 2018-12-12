@@ -19,7 +19,7 @@ class Migration01 extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('telephone');
-            $table->string('description');
+            $table->text('description');
             $table->string('addresse');
             $table->string('ville');
             $table->string('img_url');

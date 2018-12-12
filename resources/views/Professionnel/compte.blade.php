@@ -21,7 +21,7 @@
             <!-- Animated -->
             <div class="row">
                 <div class="col-md-9 col-sm-9 col-xs-12 m-auto">
-                    <form action="{{route('professionnel.modify',['id' => $pro->id])}}" method="post">
+                    <form action="{{route('professionnel.modify',['id' => $pro->id])}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="profile-login-bg">
                             <h4><span><i class="fa fa-user"></i></span> Personal <span>Info</span></h4>
@@ -30,9 +30,16 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label for="name">Nom</label>
-                                        <input class="form-control" id="name" name="name" value="{{$pro->nom . ' ' . $pro->prenom}}" type="text">
+                                        <input class="form-control" id="name" name="nom" value="{{$pro->nom}}" type="text">
                                     </div>
                                     <!--/.form-group-->
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Prenom</label>
+                                            <input class="form-control" id="name" name="prenom" value="{{$pro->prenom}}" type="text">
+                                        </div>
+                                        <!--/.form-group-->
                                 </div>
                                 <!--/.col-md-3-->
                                 <div class="col-md-6 col-sm-6">
@@ -45,16 +52,8 @@
                                 <!--/.col-md-3-->
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label for="mobile">Mobile</label>
-                                        <input class="form-control" id="mobile" name="mobile" value="{{$pro->telephone}}" type="text">
-                                    </div>
-                                    <!--/.form-group-->
-                                </div>
-                                <!--/.col-md-3-->
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="phone">Phone</label>
-                                        <input class="form-control" id="phone" name="phone" value="732-727-4884" type="text">
+                                        <label for="telephone">Telehone</label>
+                                        <input class="form-control" id="telephone" name="telephone" value="{{$pro->telephone}}" type="text">
                                     </div>
                                     <!--/.form-group-->
                                 </div>
@@ -71,8 +70,8 @@
                                 <!--/.form-group-->
                                 <!--/.col-md-3-->
                                 <div class="form-group p_b30">
-                                    <label for="adresse">Adresse</label>
-                                    <input class="form-control" id="adresse" name="adresse" type="text" value="{{$pro->addresse}}">
+                                    <label for="addresse">Adresse</label>
+                                    <input class="form-control" id="addresse" name="addresse" type="text" value="{{$pro->addresse}}">
                                 </div>
                                 <!--/.form-group-->
                             </div>
@@ -87,6 +86,17 @@
                                         <!--/.form-group-->
                                     </div>
                             </div>
+
+                            <h4><span><i class="fa fa-map-marker"></i></span> Mon Avatar</span></h4>
+                            <div>
+                                    <div class="form-group mt-3">
+                                        <div class="form-group">
+                                                <input type="file" name="image" class="input-file">
+                                            </div>
+                                        <!--/.form-group-->
+                                    </div>
+                            </div>
+
                             <h4><span><i class="fa fa-map-marker"></i></span> Ma Position</span></h4>
                             <div>
                                     <div class="form-group mt-3">
