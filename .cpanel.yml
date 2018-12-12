@@ -7,7 +7,6 @@ deployment:
  - /bin/cp -r ./config $DEPLOYPATH
  - /bin/cp -r ./database $DEPLOYPATH
  - /bin/cp -r ./hooks $DEPLOYPATH
- - /bin/cp -r ./node_modules $DEPLOYPATH
  - /bin/cp -r ./public $DEPLOYPATH
  - /bin/cp -r ./ressources $DEPLOYPATH
  - /bin/cp -r ./routes $DEPLOYPATH
