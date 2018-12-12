@@ -31,8 +31,15 @@ class Professionnel extends Model
         return $this->hasMany('App\Rdv','professionnel_id','id');
     }
 
-
     public function avis(){
         return $this->hasMany(Review::class,'professionnel_id');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User' ,'user_id');
+    }
+
+    public function profile(){
+        return $this->belongsTo('App\Profile' ,'profile_id');
     }
 }

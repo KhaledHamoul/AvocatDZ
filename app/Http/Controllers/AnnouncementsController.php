@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Announcement;
 use App\Category;
+use App\Professionnel;
 
 class AnnouncementsController extends Controller
 {
@@ -17,6 +18,7 @@ class AnnouncementsController extends Controller
 
     public function single($slug){
         $article = Announcement::where('slug',$slug)->first();
-        return view('Blog.blog_single')->with('article',$article);
+        $professionnel = Professionnel::where('user_id',$article->author->id)->first();
+        return view('Blog.blog_single',['article'=> $article , 'pro_id' => $professionnel->id ]);
     }
 }
