@@ -13,6 +13,7 @@ use App\VisiteInconnu;
 use App\Rdv;
 use App\Announcement;
 use App\Review;
+use App\Faq;
 
 class vitrineController extends Controller
 {
@@ -114,7 +115,8 @@ class vitrineController extends Controller
     }
 
     function faq(){
-        return view('Vitrine.faq');
+        $faqs = Faq::all();
+        return view('Vitrine.faq',['faqs' => $faqs]);
     }
 
     function nous(){
