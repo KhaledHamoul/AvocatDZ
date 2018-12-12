@@ -86,7 +86,10 @@
 			color: #ddd !important;
 			}
 		}
-    </style>
+	</style>
+		<link rel="stylesheet" href="{{asset('css/leaflet.css')}}"/>
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="{{asset('js/leaflet.js')}}"></script>
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -240,9 +243,13 @@
 								<label for="city">Ville</label>
 								<h3>{{ $professionnel->ville }}</h3>
 							</div>
+							<div class="form-group">
+									<input type="text" id="lat" value="{{$professionnel->lat}}">
+									<input type="text" id="lng" value="{{$professionnel->lng}}">
+								</div>
 							<br>
-							<div style="border: grey 1px solid;width: 100%; height: 400px">map</div>
-
+							<div style="width: 100%; height: 400px">map</div>
+								<div id="mapid" style="height:400px"></div>
 							<br>
 							
 							<div class="form-group">
@@ -258,6 +265,22 @@
 		</section>
 		<!-- Popular Listing -->	
 
-        @include('Vitrine.layouts.footer')
+		@include('Vitrine.layouts.footer')
+		<script>
+			var init_lat = parseFloat($('#lat').val());
+			var init_len = parseFloat($('#lng').val());
+			var mymap = L.map('mapid').setView([init_lat, init_len], 13);
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+				maxZoom: 18,
+				id: 'mapbox.streets',
+				accessToken: 'pk.eyJ1Ijoic2xhbGFoZWRkaW5lYmsiLCJhIjoiY2pwY3psc2kwMHEzNjNrcDhxaWN0NTBvaCJ9.mYLY2jJbLGhMhuX7OBEdNw'
+			}).addTo(mymap);
+			// Change the default cursor
+			document.getElementById('mapid').style.cursor = 'pointer';
+			var marker = L.marker([init_lat, init_len],{
+				draggable : true
+			}).addTo(mymap);
+		</script>
     </body>
 </html>
