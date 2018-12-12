@@ -91,6 +91,7 @@
                       </div>                     
                   </div>
 
+                  <!--
                   <div class="right-bar bg_white">
                       <h4>Les plus <span>actifs</span></h4>
 
@@ -107,6 +108,7 @@
                       </div>
 
                   </div>
+                  -->
 
 
               </div>
