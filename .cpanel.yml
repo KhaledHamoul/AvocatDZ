@@ -2,17 +2,17 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home/knounecom/public_html/
- - /bin/cp app $DEPLOYPATH
- - /bin/cp bootstrap $DEPLOYPATH
- - /bin/cp config $DEPLOYPATH
- - /bin/cp database $DEPLOYPATH
- - /bin/cp hooks $DEPLOYPATH
- - /bin/cp node_modules $DEPLOYPATH
- - /bin/cp public $DEPLOYPATH
- - /bin/cp ressources $DEPLOYPATH
- - /bin/cp routes $DEPLOYPATH
- - /bin/cp tests $DEPLOYPATH
- - /bin/cp vendor $DEPLOYPATH
+ - /bin/cp -r ./app $DEPLOYPATH
+ - /bin/cp -r ./bootstrap $DEPLOYPATH
+ - /bin/cp -r ./config $DEPLOYPATH
+ - /bin/cp -r ./database $DEPLOYPATH
+ - /bin/cp -r ./hooks $DEPLOYPATH
+ - /bin/cp -r ./node_modules $DEPLOYPATH
+ - /bin/cp -r ./public $DEPLOYPATH
+ - /bin/cp -r ./ressources $DEPLOYPATH
+ - /bin/cp -r ./routes $DEPLOYPATH
+ - /bin/cp -r ./tests $DEPLOYPATH
+ - /bin/cp -r ./vendor $DEPLOYPATH
  - /bin/cp .editorconfig $DEPLOYPATH
  - /bin/cp .env $DEPLOYPATH
  - /bin/cp composer.json $DEPLOYPATH
