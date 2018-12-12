@@ -75,20 +75,15 @@
 
                   <div class="right-bar bg_white">
                       <h4>Récemment <span>publiés</span></h4>
-                      <div class="recent-listing-img">
-                          <img src="{{ asset('vetrine_assets/images/recent-1.jpg') }}" alt="image">
-                          <div class="recent-listing-links">
-                              <a href="#" class="recent-jobs">Titre 1</a>
-                              <a href="#" class="recent-readmore">Lire</a>
-                          </div>
-                      </div>
-                      <div class="recent-listing-img">
-                          <img src="{{ asset('vetrine_assets/images/recent-2.jpg') }}" alt="image">
-                          <div class="recent-listing-links">
-                              <a href="#" class="recent-jobs">Titre 2</a>
-                              <a href="#" class="recent-readmore">Lire</a>
-                          </div>
-                      </div>                     
+                      @foreach ($recent_articles as $article)
+                        <div class="recent-listing-img">
+                            <img src="{{ asset('store/' . $article->img) }}" alt="image">
+                            <div class="recent-listing-links">
+                                <a href="{{route('blog-single',['slug' => $article->slug])}}" class="recent-jobs">{{$article->title}}</a>
+                                <a href="{{route('blog-single',['slug' => $article->slug])}}" class="recent-readmore">Lire</a>
+                            </div>
+                        </div> 
+                      @endforeach                 
                   </div>
 
                   <!--

@@ -41,6 +41,10 @@ Route::get('/compte_professionnel','ProfessionnelController@compte')->middleware
 Route::get('/creer_article_professionnel','ProfessionnelController@creerArticle')->middleware('auth','checkAvocat');
 Route::post('/store_article_professionnel','ProfessionnelController@storeArticle')->middleware('auth','checkAvocat');
 Route::get('/avis_professionnel','ProfessionnelController@avis')->middleware('auth','checkAvocat');
+Route::post('/professionnel/update-{id}',[
+    'uses' => 'ProfessionnelController@updatePro',
+    'as' => 'professionnel.modify'
+]);
 
 
 

@@ -12,7 +12,8 @@ class AnnouncementsController extends Controller
     public function index(){
         $categories = Category::all();
         $articles = Announcement::where('id','>','0')->paginate(3);
-        return view('Blog.blog',['articles'=> $articles , 'categories' => $categories]);
+        $recent_articles = Announcement::orderBy('id','desc')->take(3)->get();
+        return view('Blog.blog',['articles'=> $articles , 'categories' => $categories, 'recent_articles' => $recent_articles]);
     }
 
     public function single($slug){
