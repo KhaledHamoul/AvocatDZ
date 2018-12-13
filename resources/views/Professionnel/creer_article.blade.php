@@ -57,7 +57,7 @@
                                     <div class="form-group">
                                       <label class="col-md-4 control-label" for="image">Image</label>
                                       <div class="col-md-12">
-                                        <input type="file" name="image" class="input-file">
+                                        <input type="file" name="image" class="input-file" required>
                                       </div>
                                     </div>
                                     

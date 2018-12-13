@@ -33,7 +33,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 0 ?>
+                                    <?php $i = 1 ?>
                                     @foreach($articles as $article)
                                     <tr>
                                         <td class="serial">{{$i++}}.</td>
