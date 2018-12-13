@@ -17,7 +17,7 @@
 
 // Vitrine
 
-Route::get('/', 'VitrineController@index');
+Route::get('/', [ 'uses' => 'VitrineController@index' , 'as' => 'home']);
 Route::get('/professionnels', 'VitrineController@getProfessionnelsList');
 Route::get('/professionnels/{id}', 'VitrineController@getProfessionnelInfo');
 Route::post('/professionnels','VitrineController@getProfessionnelsListFilter');
@@ -25,7 +25,12 @@ Route::get('/Inscription', 'VitrineController@register');
 Route::get('/faq', 'VitrineController@faq');
 Route::get('/nous', 'VitrineController@nous');
 Route::get('/contact', 'VitrineController@contact');
+Route::get('/espace_pro', 'VitrineController@espacePro');
 Route::post('/rendezvous', 'VitrineController@rendezvous');
+Route::post('/login_user', 'VitrineController@loginUser');
+
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 
 
@@ -73,6 +78,11 @@ Route::get('/blog',[
 Route::get('/blog/article/article-{slug}',[
     'uses' => 'AnnouncementsController@single',
     'as' => 'blog-single'
+]);
+
+Route::get('/blog/categorie/{name}',[
+    'uses' => 'AnnouncementsController@category',
+    'as' => 'blog-category'
 ]);
 
 //Reviews

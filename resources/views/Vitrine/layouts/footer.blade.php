@@ -5,7 +5,7 @@
 
       <div class="row">
 
-          <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12">
               <div class="footer-about">
                   <img src="images/logo.png" alt="image">
                   <p>Lorem ipsum dolor amet consectur adipiscing elit sed do eiusmod tempor incididunt. Lorem ipsum dolor amet consectur adipiscing, Lorem ipsum dolor amet consectur adipiscing elit sed do eiusmod tempor incididunt...</p>
@@ -39,57 +39,16 @@
                   <ul>
                       <li><a href="#"><span><i class="fa fa-phone" aria-hidden="true"></i></span> <span>+(10) 123 456 7896</span></a>
                       </li>
-                      <li><a href="#"><span><i class="fa fa-envelope" aria-hidden="true"></i></span> <span>support@find_do.com</span></a>
+                      <li><a href="#"><span><i class="fa fa-envelope" aria-hidden="true"></i></span> <span>support@knoune.com</span></a>
                       </li>
-                      <li><a href="#"><span><i class="fa fa-globe" aria-hidden="true"></i></span> <span>wwww.finddodirectory.com</span></a>
+                      <li><a href="#"><span><i class="fa fa-globe" aria-hidden="true"></i></span> <span>wwww.knoune.com</span></a>
                       </li>
-                      <li><a href="#"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span>Find Do, 06 Highley St, Victoria, Australia.</span></a>
+                      <li><a href="#"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span>Rue y, Alger, Algérie.</span></a>
                       </li>
                   </ul>
               </div>
           </div>
-
-          <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="footer-links">
-                  <h3>Latest <span>News</span></h3>
-                  <div class="footer-latest">
-                      <a href="#"><img src="images/footer-latest-1.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-2.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-3.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-4.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-5.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-6.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-7.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-8.jpg" alt="image">
-                      </a>
-                      <a href="#"><img src="images/footer-latest-9.jpg" alt="image">
-                      </a>
-                  </div>
-              </div>
-          </div>
-
       </div>
-
-      <div class="row">
-          <div class="col-md-12">
-              <div class="footer-newsletter">
-                  <span>Subscribe</span>
-                  <h2>to our newsletter</h2>
-                  <div class="sub-newsletter">
-                      <input type="email" name="email" placeholder="Enter your email address....">
-                      <button>Subscribe</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-
       <div class="row">
           <div class="col-md-12 text-center">
               <div class="footer-copyright">

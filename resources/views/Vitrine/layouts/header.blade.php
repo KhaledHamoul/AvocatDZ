@@ -11,14 +11,19 @@
               </div>
               <div class="col-md-6 col-sm-7 col-xs-12 top_right_links">
 				<ul class="top_links">
-				  	@auth
-                      <li><a href="accueil_professionnel" ><i class="fa fa-user-o" aria-hidden="true"></i> Mon compte</a> </li>
-                      <li><a href="#" onclick="document.getElementById('logout').submit()" ><i class="fa fa-power-off" aria-hidden="true"></i></a> </li>
-					@else
-                      <li><a href="login"><i class="fa fa-lock" aria-hidden="true"></i> Se connecter</a> </li>
+                      @auth
+                        @if( session('dashboard_path') == '/')
+                            <li><i class="fa fa-user-o" aria-hidden="true"></i> {{Auth::user()->name }}</a> </li>
+                            <li><a href="#" onclick="document.getElementById('logout').submit()" ><i class="fa fa-power-off" aria-hidden="true"></i></a> </li>
+                        @else
+                            <li><a href="{{ session('dashboard_path') }}" ><i class="fa fa-user-o" aria-hidden="true"></i> Mon compte</a> </li>
+                            <li><a href="#" onclick="document.getElementById('logout').submit()" ><i class="fa fa-power-off" aria-hidden="true"></i></a> </li>
+                        @endif
+                    @else
+                      <li><a href="/login"><i class="fa fa-lock" aria-hidden="true"></i> Se connecter</a> </li>
 	  				@endif 
 				</ul>
-				<div class="add-listing"> <a href="add-listing.html"><i class="fa fa-plus" aria-hidden="true"></i>Espace Pro</a> </div>
+				<div class="add-listing"> <a href="/espace_pro"><i class="fa fa-plus" aria-hidden="true"></i>Espace Pro</a> </div>
               </div>
           </div>
       </div>
@@ -55,4 +60,5 @@
 <form action="/logout" method="post" id="logout" style="display:none">
 	@csrf
 </form>
-								
+
+				

@@ -244,14 +244,44 @@
 							<div style="border: grey 1px solid;width: 100%; height: 400px">map</div>
 
 							<br>
-							
+							<h2><span><i class="fa fa-map-marker"></i></span> Rendez-vous</h2>
 							<div class="form-group">
-								<button type="submit" class="btn btn-large btn-default" id="submit">Prendre un rendez-vous</button>
+								<div class="col-12" >
+									@if($rdv_show)
+										<form action="/rendezvous" method="post">
+											@csrf
+											<div class="row"> 
+												<div class="col-sm-12">
+													<div class="single-tab-select-box">
+														<h2>Message</h2>
+														<div class="register-input">
+															<input style="height:100px" name="Message" type="text" class="form-control" placeholder="Message" >
+														</div><!-- /.travel-select-icon -->
+													</div><!--/.single-tab-select-box-->
+												</div><!--/.col-->
+												<div class="col-sm-12">
+													<div class="single-tab-select-box">
+														<h2>Joindre un fichier</h2>
+														<div class="register-input">
+															<input  name="fichier" type="file" class="form-control"  >
+														</div><!-- /.travel-select-icon -->
+													</div><!--/.single-tab-select-box-->
+												</div><!--/.col-->
+												<input type="hidden" name="pro_id" value="{{ $professionnel->id }}" /> 
+												<div class="col-sm-12">
+													<div class="single-tab-select-box">
+														<div class="register-input">
+														<button type="submit" class="btn btn-default dropdown-toggle">valider</button>
+														</div><!-- /.travel-select-icon -->
+													</div><!--/.single-tab-select-box-->
+												</div><!--/.col-->
+											</div>      
+										</form>
+									@endif
+								</div>
 							</div>
 						</div>
-
 					</div>
-
 				</div>
 			</div>
 

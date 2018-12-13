@@ -42,15 +42,15 @@
                     @foreach($faqs as $faq)
                         <div class="panel panel-default">
                             
-                            <div class="panel-heading" role="tab" id="headingTwo">
+                            <div class="panel-heading" role="tab" id="heading{{ $faq->id }}">
                                 <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="false" aria-controls="collapsetwo" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}" class="collapsed">
                                     Donec condimentum neque est, quis finibus velit laoreet vel. ?
                                 </a>
                                 </h4>
                             </div>
                             
-                            <div id="collapsetwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
+                            <div id="collapse{{ $faq->id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ $faq->id }}" aria-expanded="false" style="height: 0px;">
                                 <div class="panel-body">
                                     
                                     <div class="listing-special-detail">

@@ -21,7 +21,6 @@ class CreateClient extends Migration
             $table->string('telephone');
             $table->string('addresse');
             $table->string('ville');
-            $table->string('img_url');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')

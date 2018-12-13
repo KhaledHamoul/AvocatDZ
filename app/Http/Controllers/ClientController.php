@@ -13,24 +13,26 @@ class ClientController extends Controller
     //
     public function register(Request $data){
         $user = User::create([
-            'email' => $data['email'],
+            'name'     => $data['nom'] . ' ' . $data['prenom'],
+            'email'    => $data['email'],
             'password' => Hash::make($data['password']),
+            'provider' => $data['provider'],
+            'provider_id' => $data['provider_id'],
         ]);
-        $avocat = Client::create([
+
+        Client::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'telephone' => $data['telephone'],
-            'addresse' => $data['addresse'],
+            'adresse' => $data['adresse'],
             'ville' => $data['ville'],
-            'img_url' => $data['img_url'],
             'user_id' => $user->id,
-            'img_url' => '/avocat_img/user.png'
 
         ]);
 
+        session(['dashboard_path' => '/']);
         Auth::login($user);
-
-        return redirect('/accueil_client');
+        return redirect('/');
     }
 
     public function login(Request $data){

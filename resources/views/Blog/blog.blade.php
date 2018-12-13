@@ -51,6 +51,8 @@
                               </li>
                               <li><i class="fa fa-clock-o"></i><a href="#"> {{date('d-m-Y',strtotime($article->posted_at))}}</a>
                               </li>
+                              <li><i class="fa fa-file"></i><a href="#"> {{$article->category->name}} </a>
+                              </li>
                           </ul>
                           <p>{!! str_limit(html_entity_decode($article->content), 400) !!}</p>
                           <a href="{{route('blog-single',['slug' => $article->slug])}}" class="blog-btn">Lire l'article</a>
@@ -67,9 +69,10 @@
                       <h4>Liste des <span>catégories</span></h4>
                       <ul class="right-bar-listing">
                         @foreach($categories as $category)
-                          <li><a href="#">{{ $category->name }}</a>
+                          <li><a href="/blog/categorie/{{ $category->name }}">{{ $category->name }}</a>
                           </li>
                         @endforeach
+                        <li><a href="/blog/">Toutes</a></li>
                       </ul>
                   </div>
 

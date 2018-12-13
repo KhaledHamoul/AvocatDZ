@@ -14,6 +14,7 @@ use App\Rdv;
 use App\Announcement;
 use App\Review;
 use App\Faq;
+use Socialite;
 
 class vitrineController extends Controller
 {
@@ -126,6 +127,33 @@ class vitrineController extends Controller
 
     function contact(){
         return view('Vitrine.contact');
+    }
+
+    function espacePro(){
+        return view('Vitrine.espace_pro');
+    }
+
+    public function loginUser(Request $data){
+        $credentials = $data->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+
+            $pros = Professionnel::where('user_id',Auth::id())->get();
+            $clients = CLient::where('user_id',Auth::id())->get();
+            
+            if( $pros->count() > 0 ) {
+                session(['dashboard_path' => '/accueil_professionnel']);
+                return redirect()->intended('/accueil_professionnel');
+            }
+            else if( $clients->count() > 0 ){
+                session(['dashboard_path' => '/']);
+                return redirect()->intended('/');
+            }
+            else {
+                session(['dashboard_path' => '/admin']);
+                return redirect()->intended('/admin');
+            }
+        }
+        return redirect('/login');
     }
 }
 

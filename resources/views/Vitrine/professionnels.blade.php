@@ -170,5 +170,8 @@
 
 		@include('Vitrine.layouts.footer')
 		@include('Vitrine.layouts.js')
+		<!--Vue JS-->
+		<script src="{{ asset('js/vue-config.js') }}"></script>
+
     </body>
 </html>

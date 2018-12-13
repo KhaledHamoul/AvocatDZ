@@ -1,6 +1,4 @@
 
-<!--Vue JS-->
-<script src="{{ asset('js/vue-config.js') }}"></script>
 
 <script src="{{ asset('vetrine_assets/js/jquery.2.2.3.min.js') }}"></script>
 <script src="{{ asset('vetrine_assets/js/bootstrap.min.js') }}"></script>
