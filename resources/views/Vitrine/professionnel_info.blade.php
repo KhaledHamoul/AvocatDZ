@@ -280,7 +280,7 @@
 			// Change the default cursor
 			document.getElementById('mapid').style.cursor = 'pointer';
 			var marker = L.marker([init_lat, init_len],{
-				draggable : true
+				draggable : false
 			}).addTo(mymap);
 		</script>
     </body>
