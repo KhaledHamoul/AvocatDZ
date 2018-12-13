@@ -126,7 +126,7 @@ class ProfessionnelController extends Controller
 
 
         $img = $request->image;
-        $img_name = Storage::putFile('users', $img);
+        $img_name = Storage::putFile('posts', $img);
 
         Announcement::create([
             'author_id' => Auth::id(),

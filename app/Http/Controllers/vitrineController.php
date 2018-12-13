@@ -87,7 +87,6 @@ class vitrineController extends Controller
                     'professionnel_id' => $id,
                     'client_id' => $client[0]->id,
                 ]);
-            
                 $review = Review::where('client_id',$client[0]->id)->where('professionnel_id',$id)->first();
                 if($review != null){
                     $has_review = true;
