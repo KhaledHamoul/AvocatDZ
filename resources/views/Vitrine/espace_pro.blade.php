@@ -32,26 +32,27 @@
                 <div class="heading">
                     <h2>Demandez les accès de votre  <span>compte</span></h2>
                 </div>
-                <form class="contact-form">
+                <form class="contact-form" method="post" action="/demande_acces" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Nom">
+                                <input type="text" name="nom" class="form-control" placeholder="Nom" required>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Prénom">
+                                <input type="text" name="prenom" class="form-control" placeholder="Prénom" required>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="E-mail">
+                                <input type="email" name="email" class="form-control" placeholder="E-mail" required>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Télephone">
+                                <input type="text" name="telephone" class="form-control" placeholder="Télephone" required>
                             </div>
                         </div>
                     </div>
@@ -59,15 +60,15 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="cardID">Carte d'indentité *</label>
-                                <input id="cardID" name="cardID" type="file" class="form-control" placeholder="Votre question ...">
+                                <input id="cardID" name="cardID" type="file" accept="image/*" class="form-control" placeholder="Votre question ..." required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="cardID">Reçu CCP/Banque</label>
-                                <input id="cardID" name="cardID" type="file" class="form-control" placeholder="Votre question ...">
+                                <label for="cardID">Reçu CCP/Banque (optionnel)</label>
+                                <input id="cardID" name="recu" type="file" accept="image/*" class="form-control" placeholder="Votre question ...">
                             </div>
                         </div>
                     </div>
@@ -95,6 +96,12 @@
 
 @include('Vitrine.layouts.footer')
 @include('Vitrine.layouts.js')
+
+@if(session('message'))
+    <script>
+        alert('Votre demande a été envoyée avec succès !');
+    </script>
+@endif
 
 </body>
 </html>

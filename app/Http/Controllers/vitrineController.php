@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Professionnel;
 use App\Competence;
 use App\Profile;
@@ -14,6 +15,7 @@ use App\Rdv;
 use App\Announcement;
 use App\Review;
 use App\Faq;
+use App\Demande;
 use Socialite;
 
 class vitrineController extends Controller
@@ -130,6 +132,27 @@ class vitrineController extends Controller
 
     function espacePro(){
         return view('Vitrine.espace_pro');
+    }
+
+    function newDemande(Request $data){
+
+        $cardID = $data->cardID;
+        $cardID_name = Storage::putFile('cartes', $cardID);
+
+        $recu = $data->recu;
+        if( isset($recu)) $recu_name = Storage::putFile('recus', $recu);
+        else $recu_name = null;
+
+        $demande = Demande::create([
+            'nom' => $data['nom'],
+            'prenom' => $data['prenom'],
+            'email' => $data['email'],
+            'telephone' => $data['telephone'],
+            'remarque' => $data['remarque'],
+            'carte_identite' => $cardID_name,
+            'recu' => $recu_name,
+        ]);
+        return redirect()->back()->with('message',true);
     }
 
     public function loginUser(Request $data){

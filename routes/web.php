@@ -28,7 +28,7 @@ Route::get('/contact', 'VitrineController@contact');
 Route::get('/espace_pro', 'VitrineController@espacePro');
 Route::post('/rendezvous', 'VitrineController@rendezvous');
 Route::post('/login_user', 'VitrineController@loginUser');
-
+Route::post('/demande_acces', 'VitrineController@newDemande');
 Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 

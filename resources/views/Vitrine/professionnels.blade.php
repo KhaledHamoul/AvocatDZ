@@ -13,6 +13,15 @@
 		.zelect {
 			outline: none;
 		}
+		.pro-connected {
+			background-color: black;
+			color: white;
+			border-radius: 5px;
+			padding: 2px;
+			font-size: 8px;
+			height: 30px;
+			width: 100%;
+		}
     </style>
     </head>
     <body>
@@ -83,7 +92,7 @@
 												
 												<br>
 											</div>
-											<div class="popular-listing-add"> <span><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $pro->ville }} </span> <span><img src="{{ asset('vetrine_assets/images/stars.png') }}" alt="image"></span> </div>
+											<div class="popular-listing-add"> <span><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $pro->ville }} </span> <span class="pro-connected">Connecté</span> </div>
 										</div>
 									</div>
 								@endforeach
