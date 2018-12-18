@@ -108,7 +108,8 @@ Route::post('/store_rating','ReviewsController@storeReview')->middleware('auth',
 Route::get('/test', 'VitrineController@test');
 
 Auth::routes();
-
+Route::get('/admin/login','VitrineController@index');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+

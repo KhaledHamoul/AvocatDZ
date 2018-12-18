@@ -1,4 +1,6 @@
 vendor/
+!vendor/tcg
+!vendor/tcg/*
 node_modules/
 npm-debug.log
 
