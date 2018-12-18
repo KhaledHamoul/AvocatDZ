@@ -196,7 +196,11 @@
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label for="email">Email</label>
-										<h3>{{ $professionnel->user->email }}</h3>
+										@if(isset($professionnel->user))
+											<h3>{{ $professionnel->user->email }}</h3>
+										@else
+										
+										@endif
 									</div>
 									<!--/.form-group-->
 								</div>

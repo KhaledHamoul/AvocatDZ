@@ -175,13 +175,26 @@ class ProfessionnelController extends Controller
     function horaires(){
         $pro = Professionnel::where('user_id',Auth::id())->first();
         $horaires = Horaire::find($pro->horaires_id);
+
+        if(!isset($horaires)){
+            $horaires = Horaire::create();
+            $pro->horaires_id = $horaires->id;
+            $pro->update();
+            $horaires = Horaire::find($horaires->id);
+        }
+        
         
         return view('Professionnel.horaires',['horaires' => $horaires]);
     }
 
-    function updateHoraires(Request $data){
+    function updateHoraires(Request $request){
         $pro = Professionnel::where('user_id',Auth::id())->first();
         $h = Horaire::find($pro->horaires_id);
+        $data = $request->toArray();
+        $tab = ['11','12','21','22','31','32','41','42','51','52','61','62','71','72'];
+        for( $i= 0 ; $i < 14 ; $i++) {
+            if( $data[$tab[$i]] == null) $data[$tab[$i]] = "00:00:00";
+        }
 
         $h->samedi_d = $data["11"];
         $h->samedi_f = $data["12"];

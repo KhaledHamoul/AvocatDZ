@@ -129,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-large btn-info" id="submit">Save Changes</button>
+                                <button type="submit" class="btn btn-large btn-info" id="submit">Enregistrer</button>
                             </div>
                         </div>
                     </form>
