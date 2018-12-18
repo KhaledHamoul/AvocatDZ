@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-text"><span class="count">{{ $avis }}</span></div>
                                             <div class="stat-heading">Avis</div>
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text"><span class="count">{{ $articles }}</span></div>
                                             <div class="stat-heading">Articles</div>
                                         </div>
                                     </div>

@@ -16,6 +16,7 @@ use App\Announcement;
 use App\Review;
 use App\Faq;
 use App\Demande;
+use App\Horaire;
 use Socialite;
 
 class vitrineController extends Controller
@@ -76,6 +77,7 @@ class vitrineController extends Controller
 
     public function getProfessionnelInfo( $id ){
         $pros = Professionnel::find($id);
+        $horaires = Horaire::find($pros->horaires_id);
         $rdv_show = false;
         $curr_visite = null;
         $review = null;
@@ -101,13 +103,16 @@ class vitrineController extends Controller
                 'professionnel_id' => $id,
             ]);
         }
+        $reviews = Review::where('professionnel_id',$id)->get();
         return view('Vitrine.professionnel_info',[
             'professionnel' => $pros,
             'rdv_show' => $rdv_show,
             'curr_visite' => $curr_visite,
             'has_review' => $has_review,
             'hidden' => $hidden,
-            'review'=> $review
+            'review'=> $review,
+            'reviews'=> $reviews,
+            'horaires' => $horaires,
             ]);
     }
 
@@ -163,6 +168,7 @@ class vitrineController extends Controller
             $clients = CLient::where('user_id',Auth::id())->get();
             
             if( $pros->count() > 0 ) {
+                
                 session(['dashboard_path' => '/accueil_professionnel']);
                 return redirect()->intended('/accueil_professionnel');
             }

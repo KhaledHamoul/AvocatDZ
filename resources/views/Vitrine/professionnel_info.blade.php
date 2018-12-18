@@ -86,6 +86,9 @@
 			color: #ddd !important;
 			}
 		}
+		.profile-login-bg .form-group > button:hover{
+			background-color: #00463e;
+		}
 	</style>
     <link rel="stylesheet" href="{{asset('css/leaflet.css')}}"/>
     <!-- Make sure you put this AFTER Leaflet's CSS -->
@@ -135,29 +138,34 @@
 								
 								<h3><i class="fa fa-clock-o"></i>&nbsp Horaires</h3>
 								<br>
+								@if(isset($horaires))
 								<ul>
 									<li>
-										Samedi <span class="pull-right">/</span>
+										Samedi <span class="pull-right">de {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->samedi_d)->format('h:i') }} à {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->samedi_f)->format('h:i') }}</span>
 									</li>
 									<li>
-										Dimanche <span class="pull-right">de 9:00 à 18:00</span>
+										Dimanche <span class="pull-right">de {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->dimanche_d)->format('h:i') }} à {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->dimanche_f)->format('h:i') }}</span>
 									</li>
 									<li>
-										Lundi <span class="pull-right">de 9:00 à 18:00</span>
+										Lundi <span class="pull-right">de {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->lundi_d)->format('h:i') }} à {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->lundi_f)->format('h:i') }}</span>
 									</li>
 									<li>
-										Mardi <span class="pull-right">de 9:00 à 18:00</span>
+										Mardi <span class="pull-right">de {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->mardi_d)->format('h:i') }} à {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->mardi_f)->format('h:i') }}</span>
 									</li>
 									<li>
-										Mercredi <span class="pull-right">de 9:00 à 18:00</span>
+										Mercredi <span class="pull-right">de {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->mercredi_d)->format('h:i') }} à {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->mercredi_f)->format('h:i') }}</span>
 									</li>
 									<li>
-										Jeudi <span class="pull-right">de 9:00 à 18:00</span>
+										Jeudi <span class="pull-right">de {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->jeudi_d)->format('h:i') }} à {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->jeudi_f)->format('h:i') }}</span>
 									</li>
 									<li>
-										Vendredi <span class="pull-right">/</span>
+										Vendredi <span class="pull-right">de {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->vendredi_d)->format('h:i') }} à {{ \Carbon\Carbon::createFromFormat('H:i:s',$horaires->vendredi_f)->format('h:i') }}</span>
 									</li>
 								</ul>
+								@else
+									<p>Les horaires ne sont pas spécifiées par le professionnel </p>
+								@endif
+						
 							</div>
 						</div>
 
@@ -252,42 +260,69 @@
 								<div id="mapid" style="height:400px"></div>
 							</div>
 							<br>
+							@if($rdv_show)
 							<h2><span><i class="fa fa-map-marker"></i></span> Rendez-vous</h2>
 							<div class="form-group">
 								<div class="col-12" >
-									@if($rdv_show)
-										<form action="/rendezvous" method="post">
-											@csrf
-											<div class="row"> 
-												<div class="col-sm-12">
-													<div class="single-tab-select-box">
-														<h2>Message</h2>
-														<div class="register-input">
-															<input style="height:100px" name="Message" type="text" class="form-control" placeholder="Message" >
-														</div><!-- /.travel-select-icon -->
-													</div><!--/.single-tab-select-box-->
-												</div><!--/.col-->
-												<div class="col-sm-12">
-													<div class="single-tab-select-box">
-														<h2>Joindre un fichier</h2>
-														<div class="register-input">
-															<input  name="fichier" type="file" class="form-control"  >
-														</div><!-- /.travel-select-icon -->
-													</div><!--/.single-tab-select-box-->
-												</div><!--/.col-->
-												<input type="hidden" name="pro_id" value="{{ $professionnel->id }}" /> 
-												<div class="col-sm-12">
-													<div class="single-tab-select-box">
-														<div class="register-input">
-														<button type="submit" class="btn btn-default dropdown-toggle">valider</button>
-														</div><!-- /.travel-select-icon -->
-													</div><!--/.single-tab-select-box-->
-												</div><!--/.col-->
-											</div>      
-										</form>
-									@endif
+									<form action="/rendezvous" method="post">
+										@csrf
+										<div class="row"> 
+											<div class="col-sm-12">
+												<div class="form-group">
+													<h2>Message</h2>
+													<div class="register-input">
+														<input style="height:100px" name="Message" type="text" class="form-control" placeholder="Message" >
+													</div><!-- /.travel-select-icon -->
+												</div><!--/.single-tab-select-box-->
+											</div><!--/.col-->
+											<div class="col-sm-12">
+												<div class="form-group">
+													<h2>Joindre un fichier</h2>
+													<div class="register-input">
+														<input  name="fichier" type="file" class="form-control"  >
+													</div><!-- /.travel-select-icon -->
+												</div><!--/.single-tab-select-box-->
+											</div><!--/.col-->
+											<input type="hidden" name="pro_id" value="{{ $professionnel->id }}" /> 
+											<div class="col-sm-12">
+												<div class="form-group">
+													<button type="submit" class="btn btn-large btn-default">valider</button>
+												</div><!--/.single-tab-select-box-->
+											</div><!--/.col-->
+										</div>      
+									</form>
 								</div>
 							</div>
+							@else 
+								<div class="row">
+									<div class="col-sm-8">
+										<div class="form-group">
+											<button disabled class="btn btn-large btn-default">Connecter-vous pour pouvoir prendre des rendez-vous</button>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<button onclick="location.href = '/login'" class="btn btn-large btn-default">Se connecter</button>
+										</div>
+									</div>
+								</div>
+							@endif
+							<h2><span><i class="fa fa-map-marker"></i></span> Avis</h2>
+							@if((!$hidden)&&($has_review))
+								<div class="form-group">
+									<h3>{{ $review->client->nom }}</h4>
+									<br>
+									<input value="{{ $review->avis }}" name="review" />
+									<!--/.form-group-->
+								</div>
+							@endif
+							@foreach($reviews as $rev)
+								<div class="form-group">
+									<h4>{{ $rev->client->nom }}</h4>
+									<p>{{ $rev->avis }}</p>
+									<!--/.form-group-->
+								</div>
+							@endforeach
 						</div>
 					</div>
 				</div>

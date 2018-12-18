@@ -45,9 +45,9 @@
                           <li class="dropdown active"> <a href="/" >Accueil</a></li>
                           <li class="dropdown active"> <a href="/professionnels" >Professionnels</a></li>
                           <li class="dropdown active"> <a href="/blog" >Blog</a></li>
-                          <li class="dropdown active"> <a href="/faq" >FAQ</a></li>
                           <li class="dropdown active"> <a href="/nous" >Qui somme nous</a></li>
                           <li class="dropdown active"> <a href="/contact" >Contacts</a></li>
+                          <li class="dropdown active"> <a href="/faq" >FAQ</a></li>
                       </ul>
                   </div>
               </div>

@@ -17,6 +17,8 @@ use App\VisiteInconnu;
 use App\Rdv;
 use App\Category;
 use App\Announcement;
+use App\Review;
+use App\Horaire;
 use Carbon\Carbon;
 
 
@@ -28,6 +30,8 @@ class ProfessionnelController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $hraires = Horaire::create();
 
         $avocat = Avocat::create([
             'nom' => $data['nom'],
@@ -41,8 +45,8 @@ class ProfessionnelController extends Controller
             'profile_id' => $data['profile'],
             'lat' => 'lat',
             'lng' => 'lng',
-            'img_url' => '/avocat_img/user.png'
-
+            'img_url' => '/avocat_img/user.png',
+            'horaires_id' => $horaires->id,
         ]);
 
         Auth::login($user);
@@ -62,8 +66,10 @@ class ProfessionnelController extends Controller
         $userID = Auth::id();
         $pro = Professionnel::where('user_id',$userID)->first();
         $visites = count( Visite::where('professionnel_id',$pro->id)->get()) + count( VisiteInconnu::where('professionnel_id',$pro->id)->get());
-        
-        $params = ['professionnel' => $pro , 'visites' => $visites];
+        $avis = count( Review::where('professionnel_id',$pro->id)->get());
+        $articles = count( Announcement::where('author_id',Auth::id())->get());
+
+        $params = ['professionnel' => $pro , 'visites' => $visites , 'avis' => $avis , 'articles' => $articles ];
         return view('Professionnel.accueil',$params);
     }
 
@@ -164,5 +170,36 @@ class ProfessionnelController extends Controller
         return redirect()->back()
         ->with('pro',$pro)
         ->with('pro_email',Auth::user()->email);
+    }
+
+    function horaires(){
+        $pro = Professionnel::where('user_id',Auth::id())->first();
+        $horaires = Horaire::find($pro->horaires_id);
+        
+        return view('Professionnel.horaires',['horaires' => $horaires]);
+    }
+
+    function updateHoraires(Request $data){
+        $pro = Professionnel::where('user_id',Auth::id())->first();
+        $h = Horaire::find($pro->horaires_id);
+
+        $h->samedi_d = $data["11"];
+        $h->samedi_f = $data["12"];
+        $h->dimanche_d = $data["21"];
+        $h->dimanche_f = $data["22"];
+        $h->lundi_d = $data["31"];
+        $h->lundi_f = $data["32"];
+        $h->mardi_d = $data["41"];
+        $h->mardi_f = $data["42"];
+        $h->mercredi_d = $data["51"];
+        $h->mercredi_f = $data["52"];
+        $h->jeudi_d = $data["61"];
+        $h->jeudi_f = $data["62"];
+        $h->vendredi_d = $data["71"];
+        $h->vendredi_f = $data["72"];
+
+        $h->update();
+         return redirect()->back()->with('message',true);
+
     }
 }

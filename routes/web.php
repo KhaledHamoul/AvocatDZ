@@ -50,7 +50,8 @@ Route::post('/professionnel/update-{id}',[
     'uses' => 'ProfessionnelController@updatePro',
     'as' => 'professionnel.modify'
 ]);
-
+Route::get('/horaires_professionnel','ProfessionnelController@horaires')->middleware('auth','checkAvocat');
+Route::post('/update_horaires','ProfessionnelController@updateHoraires')->middleware('auth','checkAvocat');
 
 
 //client

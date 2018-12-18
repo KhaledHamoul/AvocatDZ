@@ -26,6 +26,9 @@
                     </li>
                     <li class="menu-title">Autres</li>
                     <li>
+                        <a href="/horaires_professionnel"><i class="menu-icon far fa-clock"></i>Mes horaires </a>
+                    </li>
+                    <li>
                         <a href="/compte_professionnel"><i class="menu-icon fa fa-cog"></i>Mon compte </a>
                     </li>
                 </ul>

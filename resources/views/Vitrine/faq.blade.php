@@ -45,7 +45,7 @@
                             <div class="panel-heading" role="tab" id="heading{{ $faq->id }}">
                                 <h4 class="panel-title">
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}" class="collapsed">
-                                    Donec condimentum neque est, quis finibus velit laoreet vel. ?
+                                    {{ $faq->question }}
                                 </a>
                                 </h4>
                             </div>
@@ -55,7 +55,7 @@
                                     
                                     <div class="listing-special-detail">
                                                 
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum </p>
+                                        <p> {{ $faq->reponse }}</p>
                                         
                                     </div>
                                     
