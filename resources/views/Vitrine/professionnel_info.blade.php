@@ -35,57 +35,53 @@
         }
 
 
-		/* 5 stars rating */ 
-		#full-stars {
-
-			/* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
-			.rating-group {
-			display: inline-flex !important;
-			}
-
-			/* make hover effect work properly in IE */
-			.rating__icon {
-			pointer-events: none !important;
-			}
-
-			/* hide radio inputs */
-			.rating__input {
-			position: absolute !important;
-			left: -9999px !important;
-			}
-
-			/* hide 'none' input from screenreaders */
-			.rating__input--none {
-			display: none !important
-			}
-
-			/* set icon padding and size */
-			.rating__label {
-			cursor: pointer !important;
-			padding: 0 0.1em !important;
-			font-size: 2rem !important;
-			}
-
-			/* set default star color */
-			.rating__icon--star {
-			color: orange !important;
-			}
-
-			/* if any input is checked, make its following siblings grey */
-			.rating__input:checked ~ .rating__label .rating__icon--star {
-			color: #ddd !important;
-			}
-
-			/* make all stars orange on rating group hover */
-			.rating-group:hover .rating__label .rating__icon--star {
-			color: orange !important;
-			}
-
-			/* make hovered input's following siblings grey on hover */
-			.rating__input:hover ~ .rating__label .rating__icon--star {
-			color: #ddd !important;
-			}
+		/* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+		#half-stars .rating-group {
+		display: inline-flex;
 		}
+		#half-stars .rating__icon {
+		pointer-events: none;
+		}
+		#half-stars .rating__input {
+		position: absolute !important;
+		left: -9999px !important;
+		}
+		#half-stars .rating__label {
+		cursor: pointer;
+		/* if you change the left/right padding, update the margin-right property of .rating__label--half as well. */
+		padding: 0 0.1em;
+		font-size: 2rem;
+		}
+		#half-stars .rating__label--half {
+		padding-right: 0;
+		margin-right: -0.6em;
+		z-index: 2;
+		}
+		#half-stars .rating__icon--star {
+		color: orange;
+		}
+		#half-stars .rating__icon--none {
+		color: #eee;
+		}
+		#half-stars .rating__input--none:checked + .rating__label .rating__icon--none {
+		color: red;
+		}
+		#half-stars .rating__input:checked ~ .rating__label .rating__icon--star {
+		color: #ddd;
+		}
+		#half-stars .rating-group:hover .rating__label .rating__icon--star, #half-stars .rating-group:hover .rating__label--half .rating__icon--star {
+		color: orange;
+		}
+		#half-stars .rating__input:hover ~ .rating__label .rating__icon--star, #half-stars .rating__input:hover ~ .rating__label--half .rating__icon--star {
+		color: #ddd;
+		}
+		#half-stars .rating-group:hover .rating__input--none:not(:hover) + .rating__label .rating__icon--none {
+		color: #eee;
+		}
+		#half-stars .rating__input--none:hover + .rating__label .rating__icon--none {
+		color: red;
+		}
+
 		.profile-login-bg .form-group > button:hover{
 			background-color: #00463e;
 		}
@@ -235,6 +231,17 @@
 									<!--/.form-group-->
 								</div>
 							</div>
+							<div class="col-md-12 col-sm-12">
+								<div class="form-group">
+									<input type="text" id="review_average" value="{{$review_average}}" style="display:none;">
+								</div>
+								<div class="form-group">
+									<h3>Note</h4>
+									<br>
+									<h1 id="review_average_display" class="jumbotron text-center" style="color: #1fb7a6;"></h1>
+									<!--/.form-group-->
+								</div>
+							</div>
 							<br>
 							<div class="form-group">
 								<h3>Description</h4>
@@ -297,6 +304,94 @@
 									</form>
 								</div>
 							</div>
+							<div class="row">
+							<div class="col-sm-12">
+								@if((!$hidden)&&($has_review))
+								<form action="{{route('review.update',['visite' => $curr_visite])}}" method="post">
+									@csrf
+									<div class="form-group">
+										<input type="text" id="review_rate" value="{{$review->rate}}" style="display:none;">
+									</div>
+									<div class="form-group">
+										<h2>Rating</h2>
+										<div id="half-stars">
+											<div class="rating-group">
+												<input class="rating__input rating__input--none" checked name="rate" id="rate-0" value="0" type="radio">
+												<label aria-label="0 stars" class="rating__label" for="rate-0">&nbsp;</label>
+												<label aria-label="0.5 stars" class="rating__label rating__label--half" for="rate-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+												<input class="rating__input" name="rate" id="rate-05" value="0.5" type="radio">
+												<label aria-label="1 star" class="rating__label" for="rate-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-10" value="1" type="radio">
+												<label aria-label="1.5 stars" class="rating__label rating__label--half" for="rate-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+												<input class="rating__input" name="rate" id="rate-15" value="1.5" type="radio">
+												<label aria-label="2 stars" class="rating__label" for="rate-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-20" value="2" type="radio">
+												<label aria-label="2.5 stars" class="rating__label rating__label--half" for="rate-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+												<input class="rating__input" name="rate" id="rate-25" value="2.5" type="radio" checked>
+												<label aria-label="3 stars" class="rating__label" for="rate-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-30" value="3" type="radio">
+												<label aria-label="3.5 stars" class="rating__label rating__label--half" for="rate-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+												<input class="rating__input" name="rate" id="rate-35" value="3.5" type="radio">
+												<label aria-label="4 stars" class="rating__label" for="rate-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-40" value="4" type="radio">
+												<label aria-label="4.5 stars" class="rating__label rating__label--half" for="rate-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+												<input class="rating__input" name="rate" id="rate-45" value="4.5" type="radio">
+												<label aria-label="5 stars" class="rating__label" for="rate-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+												<input class="rating__input" name="rate" id="rate-50" value="5" type="radio">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<h2>Avis</h2>
+										<textarea id="avis" name="avis" cols="40" rows="5" class="form-control">{{$review->avis}}</textarea>													
+									</div><!--/.single-tab-select-box-->
+									<div class="form-group">
+											<button type="submit" class="btn btn-large btn-info">Modifier</button>
+									</div><!--/.single-tab-select-box-->
+								</form>
+								@elseif(!$hidden)
+								<form action="{{route('review.store',['visite' => $curr_visite])}}" method="post">
+										@csrf
+										<div class="form-group">
+											<h2>Rating</h2>
+											<div id="half-stars">
+												<div class="rating-group">
+													<input class="rating__input rating__input--none" checked name="rate" id="rate-0" value="0" type="radio">
+													<label aria-label="0 stars" class="rating__label" for="rate-0">&nbsp;</label>
+													<label aria-label="0.5 stars" class="rating__label rating__label--half" for="rate-05"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+													<input class="rating__input" name="rate" id="rate-05" value="0.5" type="radio">
+													<label aria-label="1 star" class="rating__label" for="rate-10"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+													<input class="rating__input" name="rate" id="rate-10" value="1" type="radio">
+													<label aria-label="1.5 stars" class="rating__label rating__label--half" for="rate-15"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+													<input class="rating__input" name="rate" id="rate-15" value="1.5" type="radio">
+													<label aria-label="2 stars" class="rating__label" for="rate-20"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+													<input class="rating__input" name="rate" id="rate-20" value="2" type="radio">
+													<label aria-label="2.5 stars" class="rating__label rating__label--half" for="rate-25"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+													<input class="rating__input" name="rate" id="rate-25" value="2.5" type="radio" checked>
+													<label aria-label="3 stars" class="rating__label" for="rate-30"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+													<input class="rating__input" name="rate" id="rate-30" value="3" type="radio">
+													<label aria-label="3.5 stars" class="rating__label rating__label--half" for="rate-35"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+													<input class="rating__input" name="rate" id="rate-35" value="3.5" type="radio">
+													<label aria-label="4 stars" class="rating__label" for="rate-40"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+													<input class="rating__input" name="rate" id="rate-40" value="4" type="radio">
+													<label aria-label="4.5 stars" class="rating__label rating__label--half" for="rate-45"><i class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+													<input class="rating__input" name="rate" id="rate-45" value="4.5" type="radio">
+													<label aria-label="5 stars" class="rating__label" for="rate-50"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+													<input class="rating__input" name="rate" id="rate-50" value="5" type="radio">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<h2>Avis</h2>
+											<textarea id="avis" name="avis" cols="40" rows="5" class="form-control"></textarea>													
+										</div><!--/.single-tab-select-box-->
+										<div class="form-group">
+											<button type="submit" class="btn btn-large btn-success">Ajouter</button>
+										</div><!--/.single-tab-select-box-->
+								</form>
+								@endif
+							</div>
+							</div>
 							@else 
 								<div class="row">
 									<div class="col-sm-8">
@@ -334,9 +429,11 @@
 
 		</section>
 		<!-- Popular Listing -->	
-
+		<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+		<script src="{{asset('js/countup.js')}}"></script>
 		@include('Vitrine.layouts.footer')
 		<script>
+			/* Setting up Map */
 			var init_lat = document.getElementById('lat').value;
 			var init_len = document.getElementById('lng').value;
 			var mymap = L.map('mapid').setView([init_lat, init_len], 13);
@@ -351,6 +448,62 @@
 			var marker = L.marker([init_lat, init_len],{
 				draggable : false
 			}).addTo(mymap);
+
+
+			/* count up */
+			var options = {
+			  useEasing: true,
+			  useGrouping: true,
+			  separator: ',',
+			  decimal: '.',
+			};
+			var review_average = document.getElementById('review_average').value;
+			var mark = new CountUp('review_average_display', 0,review_average, 2, 2, options);
+			if (!mark.error) {
+			mark.start();
+			} else {
+			  console.error(mark.error);
+			}
+
+			/* Setting up stars */
+			var review_rate = document.getElementById('review_rate').value;
+			console.log(review_rate);
+			if(review_rate != '' || review_rate != null){
+				switch(review_rate){
+					case '0.5':
+					$('#rate-05').prop('checked',true);
+					break;
+					case '1':
+					$('#rate-10').prop('checked',true);
+					break;
+					case '1.5':
+					$('#rate-15').prop('checked',true);
+					break;
+					case '2':
+					$('#rate-20').prop('checked',true);
+					break;
+					case '2.5':
+					$('#rate-25').prop('checked',true);
+					break;
+					case '3':
+					$('#rate-30').prop('checked',true);
+					break;
+					case '3.5':
+					$('#rate-35').prop('checked',true);
+					break;
+					case '4':
+					$('#rate-40').prop('checked',true);
+					break;
+					case '4.5':
+					$('#rate-45').prop('checked',true);
+					break;
+					case '5':
+					$('#rate-50').prop('checked',true);
+					break;
+					default:
+					break;
+				}
+			}
 		</script>
     </body>
 </html>
