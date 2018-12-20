@@ -290,7 +290,7 @@
 												<div class="form-group">
 													<h2>Joindre un fichier</h2>
 													<div class="register-input">
-														<input  name="fichier" type="file" class="form-control"  >
+														<input  name="fichier" type="file" class="form-control">
 													</div><!-- /.travel-select-icon -->
 												</div><!--/.single-tab-select-box-->
 											</div><!--/.col-->
@@ -313,7 +313,7 @@
 										<input type="text" id="review_rate" value="{{$review->rate}}" style="display:none;">
 									</div>
 									<div class="form-group">
-										<h2>Rating</h2>
+										<h2>Votre note</h2>
 										<div id="half-stars">
 											<div class="rating-group">
 												<input class="rating__input rating__input--none" checked name="rate" id="rate-0" value="0" type="radio">
@@ -342,18 +342,24 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<h2>Avis</h2>
-										<textarea id="avis" name="avis" cols="40" rows="5" class="form-control">{{$review->avis}}</textarea>													
-									</div><!--/.single-tab-select-box-->
-									<div class="form-group">
-											<button type="submit" class="btn btn-large btn-info">Modifier</button>
+											<button type="submit" class="btn btn-large btn-default">Modifier</button>
+											<a href="{{route('review.delete',['visite' => $curr_visite])}}" type="button" class="btn btn-large btn-default" style="
+											color: #fff; 
+											font-size: 15px;
+											display: inline-block;
+											border-radius: 0;
+											height: 44px;
+											padding: 0 40px;
+											width: auto;
+											background:brown;
+											line-height:44px">Supprimer</a>
 									</div><!--/.single-tab-select-box-->
 								</form>
 								@elseif(!$hidden)
 								<form action="{{route('review.store',['visite' => $curr_visite])}}" method="post">
 										@csrf
 										<div class="form-group">
-											<h2>Rating</h2>
+											<h2>Ajouter une note</h2>
 											<div id="half-stars">
 												<div class="rating-group">
 													<input class="rating__input rating__input--none" checked name="rate" id="rate-0" value="0" type="radio">
@@ -382,10 +388,6 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<h2>Avis</h2>
-											<textarea id="avis" name="avis" cols="40" rows="5" class="form-control"></textarea>													
-										</div><!--/.single-tab-select-box-->
-										<div class="form-group">
 											<button type="submit" class="btn btn-large btn-success">Ajouter</button>
 										</div><!--/.single-tab-select-box-->
 								</form>
@@ -406,22 +408,6 @@
 									</div>
 								</div>
 							@endif
-							<h2><span><i class="fa fa-map-marker"></i></span> Avis</h2>
-							@if((!$hidden)&&($has_review))
-								<div class="form-group">
-									<h3>{{ $review->client->nom }}</h4>
-									<br>
-									<input value="{{ $review->avis }}" name="review" />
-									<!--/.form-group-->
-								</div>
-							@endif
-							@foreach($reviews as $rev)
-								<div class="form-group">
-									<h4>{{ $rev->client->nom }}</h4>
-									<p>{{ $rev->avis }}</p>
-									<!--/.form-group-->
-								</div>
-							@endforeach
 						</div>
 					</div>
 				</div>

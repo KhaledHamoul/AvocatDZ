@@ -15,7 +15,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('avis');
+            $table->text('avis')->nullable();
             $table->string('rate');
             $table->boolean('hidden')->default(false);
             $table->timestamps();

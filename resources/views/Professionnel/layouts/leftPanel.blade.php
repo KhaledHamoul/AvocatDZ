@@ -11,7 +11,7 @@
                         <a href="/rdv_professionnel"><i class="menu-icon fa fa-calendar"></i>Rendez-vous </a>
                     </li>
                     <li>
-                        <a href="/avis_professionnel"><i class="menu-icon fa fa-comment"></i>Avis </a>
+                        <a href="/avis_professionnel"><i class="menu-icon fa fa-comment"></i>Note </a>
                     </li>
                     <li>
                         <a href="/visites_professionnel"><i class="menu-icon fa fa-eye"></i>Visites </a>

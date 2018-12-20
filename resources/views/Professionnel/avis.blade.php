@@ -19,6 +19,15 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
+                            <strong class="card-title">Ma note</i></strong>
+                        </div>
+                        <div class="card-body">
+                            <input type="text" id="review_average" value="{{$review_average}}" style="display:none;">
+                            <h2 id="review_average_display"></h2>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
                             <strong class="card-title">Avis de visiteurs</strong>
                         </div>
                         <div class="table-stats order-table ov-h">
@@ -28,7 +37,7 @@
                                         <th class="serial">#</th>
                                         <th class="avatar">Avatar</th>
                                         <th>Nom Prénom</th>
-                                        <th>Avis</th>
+                                        <th>Note</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -43,7 +52,7 @@
                                             </div>
                                         </td>
                                         <td>  <span class="name">{{$review->client->user->name}}</span> </td>
-                                        <td><span class="tel">{{$review->avis}}</span></td>
+                                        <td><span class="tel">{{$review->rate}}</span></td>
                                         <td>
                                             <span class="badge badge-complete"><i class="fa fa-eye"></i></span>
                                         </td>
@@ -61,5 +70,22 @@
         <!-- /.content -->
         <div class="clearfix"></div>
      @include('professionnel.layouts.footer')
+     <script src="{{asset('js/countup.js')}}"></script>
+     <script>
+        /* count up */
+        var options = {
+          useEasing: true,
+          useGrouping: true,
+          separator: ',',
+          decimal: '.',
+        };
+        var review_average = document.getElementById('review_average').value;
+        var mark = new CountUp('review_average_display', 0,review_average, 2, 2, options);
+        if (!mark.error) {
+        mark.start();
+        } else {
+          console.error(mark.error);
+        }
+     </script>
 </body>
 </html>

@@ -97,7 +97,7 @@ Route::post('/update_rating/{visite}',[
     'as' => 'review.update'
 ]);
 
-Route::post('/delete_rating/{visite}',[
+Route::get('/delete_rating/{visite}',[
     'uses' => 'ReviewsController@deleteReview',
     'as' => 'review.delete'
 ]);
