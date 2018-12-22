@@ -7,6 +7,7 @@
     @include('professionnel.layouts.head')
     <link rel="stylesheet" href="{{asset('css/switch.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/leaflet.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/autocomplete.css')}}"/>
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="{{asset('js/leaflet.js')}}"></script>
 </head>
@@ -79,12 +80,21 @@
 
                             <h4><span><i class="fa fa-map-marker"></i></span> A propos de Moi</span></h4>
                             <div>
-                                    <div class="form-group mt-3">
-                                        <div class="form-group">
-                                            <textarea class="form-control" id="about-me" rows="3" name="description" required="">{{$pro->description}}</textarea>
-                                        </div>
-                                        <!--/.form-group-->
+                                <div class="form-group mt-3">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="about-me" rows="3" name="description" required="">{{$pro->description}}</textarea>
                                     </div>
+                                    <!--/.form-group-->
+                                </div>
+                            </div>
+
+                            <h4><span><i class="fa fa-map-marker"></i></span> Mes compétences</span></h4>
+                            <div>
+                                <div class="form-group mt-3">
+                                    <div class="form-group">
+                                            <textarea id="textarea" class="example" rows="1"></textarea>                                    </div>
+                                    <!--/.form-group-->
+                                </div>
                             </div>
 
                             <h4><span><i class="fa fa-map-marker"></i></span> Mon Avatar</span></h4>
@@ -127,6 +137,7 @@
         <!-- /.content -->
         <div class="clearfix"></div>
      @include('professionnel.layouts.footer')
+     <script src="{{asset('js/autocomplete.js')}}"></script>
      <script>
         var on_modify = true;
         var init_lat = parseFloat($('#lat').val());
@@ -162,7 +173,43 @@
         marker.on('moveend',function(e){
             $('#lat').val(marker.getLatLng().lat);
             $('#lng').val(marker.getLatLng().lng);
+        });
+
+        $('#textarea')
+        .textext({
+            plugins : 'autocomplete tags filter'
         })
+        .bind('getSuggestions', function(e, data)
+        {
+            var list = [
+                    'Basic',
+                    'Closure',
+                    'Cobol',
+                    'Delphi',
+                    'Erlang',
+                    'Fortran',
+                    'Go',
+                    'Groovy',
+                    'Haskel',
+                    'Java',
+                    'JavaScript',
+                    'OCAML',
+                    'PHP',
+                    'Perl',
+                    'Python',
+                    'Ruby',
+                    'Scala'
+                ],
+                textext = $(e.target).textext()[0],
+                query = (data ? data.query : '') || ''
+                ;
+
+            $(this).trigger(
+                'setSuggestions',
+                { result : textext.itemManager().filter(list, query) }
+            );
+        })
+        ;
     </script>
 </body>
 </html>
