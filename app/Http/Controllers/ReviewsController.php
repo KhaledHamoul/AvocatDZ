@@ -48,7 +48,7 @@ class ReviewsController extends Controller
     }
 
 
-    public function deleteReview(Request $request,$visite){
+    public function deleteReview($visite){
         $curr_visite = Visite::find($visite);
         $client = Client::find($curr_visite->client_id);
         $review = Review::where('client_id',$client->id)->where('professionnel_id',$curr_visite->professionnel_id)->first();

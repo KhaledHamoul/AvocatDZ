@@ -104,6 +104,17 @@ class vitrineController extends Controller
             ]);
         }
         $reviews = Review::where('professionnel_id',$id)->get();
+        $reviews_count = count($reviews);
+        $review_average = 0;
+        $review_average_rounded = 0;
+        if($reviews_count > 0){
+            $reviews_total = 0;
+            foreach($reviews as $review_in_loop){
+                $reviews_total += $review_in_loop->rate;
+            }
+            $review_average = $reviews_total / $reviews_count;
+            $review_average_rounded = round($review_average * 2) / 2;
+        }
         return view('Vitrine.professionnel_info',[
             'professionnel' => $pros,
             'rdv_show' => $rdv_show,
@@ -112,6 +123,7 @@ class vitrineController extends Controller
             'hidden' => $hidden,
             'review'=> $review,
             'reviews'=> $reviews,
+            'review_average' => $review_average,
             'horaires' => $horaires,
             ]);
     }
