@@ -16,12 +16,11 @@ class VoyagerController extends Controller
         return Voyager::view('voyager::index');
     }
 
-    // Changed 
     public function logout()
     {
         Auth::logout();
 
-        return redirect('/login');
+        return redirect()->route('voyager.login');
     }
 
     public function upload(Request $request)
