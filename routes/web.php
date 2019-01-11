@@ -111,5 +111,15 @@ Auth::routes();
 Route::get('/admin/login','VitrineController@index');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    // Custom voyager routes
+    Route::post('/announcements',[
+        'uses' => 'CustomVoyagerController@storeAnnouncement',
+        'as' => 'voyager.announcements.store'
+    ]);
+
+    Route::put('/announcements/{announcement}',[
+        'uses' => 'CustomVoyagerController@updateAnnouncement',
+        'as' => 'voyager.announcements.update'
+    ]);
 });
 
