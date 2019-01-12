@@ -43,9 +43,9 @@
                                             </div>
                                         </td>
                                         <td>  <span class="name">{{$article->title}}</span> </td>
-                                        <td>  <span class="name">{{date('d-m-Y',strtotime($article->posted_at))}}</span> </td>
+                                        <td>  <span class="name">{{date('d-m-Y',strtotime($article->created_at))}}</span> </td>
                                         <td>
-                                            <span class="badge badge-complete"><i class="fa fa-file-text-o"></i></span>
+                                            <span class="badge badge-complete"><a href="{{route('blog-single',['slug' => $article->slug])}}"><i class="fa fa-file-text-o"></i></a></span>
                                         </td>
                                     </tr>
                                     @endforeach

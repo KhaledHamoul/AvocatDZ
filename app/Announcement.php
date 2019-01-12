@@ -8,7 +8,7 @@ class Announcement extends Model
 {
     
     protected $fillable = [
-        'author_id', 'category_id','title','content','img','slug','posted_at',
+        'author_id', 'category_id','title','content','img','slug','posted_at','by_admin','validate',
     ];
     
 

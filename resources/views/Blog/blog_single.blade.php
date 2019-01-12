@@ -22,7 +22,7 @@
                 <div class="col-md-12 text-center">
                     <div class="inner_banner_2_detail">
                         <h2>{{$article->title}}</h2>
-                        <p><a href="/">Accueil</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="/blog">Blog </a><i class="fa fa-angle-double-right" aria-hidden="true"></i> Article</p>
+                        <p><a href="/">Accueil</a><i class="fa fa-angle-double-right" aria-hidden="true"></i> Article</p>
                     </div>
                 </div>
 
@@ -49,9 +49,14 @@
 
                         <div class="blog-detail">
                             <ul class="blog-admin">
+                                @if($pro_id != null)
                                 <li><i class="fa fa-user"></i>Publié par :<a href="/professionnels/{{$pro_id}}"> {{$article->author->name}}</a>
                                 </li>
-                                <li><i class="fa fa-clock-o"></i><a href="#"> {{date('d-m-Y',strtotime($article->posted_at))}}</a>
+                                @else
+                                <li><i class="fa fa-user"></i>Publié par l'admin : {{$admin->name}}
+                                </li>
+                                @endif
+                                <li><i class="fa fa-clock-o"></i><a href="#"> {{date('d-m-Y',strtotime($article->created_at))}}</a>
                                 </li>
                             </ul>
                             <p>  {!! html_entity_decode($article->content) !!} </p>

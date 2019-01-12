@@ -152,8 +152,7 @@ class ProfessionnelController extends Controller
             'title' => $request->titre,
             'content' => $request->contenu,
             'img' => $img_name,
-            'slug' => str_slug($request->titre),
-            'posted_at' => Carbon::now()
+            'slug' => str_slug($request->titre)
         ]);
 
         return view('Professionnel.articles')

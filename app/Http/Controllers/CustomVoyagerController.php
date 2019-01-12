@@ -13,14 +13,16 @@ class CustomVoyagerController extends Controller
             $img = $request->img;
             $main_image = '';
             if($img != null)
-                $main_image = Storage::disk('public')->putFile('announcements', $img);
+                $main_image = Storage::putFile('announcements', $img);
             $announcement = Announcement::create([
                 'title' => $request->title,
                 'content' => $request->content,
                 'img' => $main_image,
                 'slug' => str_slug($request->title),
                 'category_id' => $request->category_id,
-                'author_id' => Auth::id()
+                'author_id' => Auth::id(),
+                'by_admin' => 1,
+                'validate' => 1
             ]);
             return redirect()->route('voyager.announcements.index');
         }
@@ -28,13 +30,13 @@ class CustomVoyagerController extends Controller
     }
 
 
-    public function updateProduct(Request $request,$announcement){
+    public function updateAnnoucement(Request $request,$announcement){
         if (!$request->ajax()) {
             $myannouncement = Product::where('id',$announcement)->first();
             $img = $request->img;
             $main_image = $myannouncement->img;
             if($img != null)
-                $main_image = Storage::disk('public')->putFile('announcements', $img);
+                $main_image = Storage::putFile('announcements', $img);
             $myannouncement->title = $request->title;
             $myannouncement->content = $request->content;
             $myannouncement->img = $main_image;

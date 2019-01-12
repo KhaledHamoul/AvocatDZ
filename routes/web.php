@@ -81,10 +81,18 @@ Route::get('/blog/article/article-{slug}',[
     'as' => 'blog-single'
 ]);
 
-Route::get('/blog/categorie/{name}',[
+Route::get('/blog/categorie/{category}',[
     'uses' => 'AnnouncementsController@category',
-    'as' => 'blog-category'
+    'as' => 'blog.category'
 ]);
+
+//Blog/Ajax
+Route::post('/validate-announcement',[
+    'uses' => 'AnnouncementsController@validateAnnouncement',
+    'as' => 'validate-announcement'
+]);
+
+
 
 //Reviews
 Route::post('/store_rating/{visite}',[

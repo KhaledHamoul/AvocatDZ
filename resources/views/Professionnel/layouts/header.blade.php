@@ -9,15 +9,6 @@
             </div>
             <div class="top-right">
                 <div class="header-menu">
-                    <div class="header-left">
-
-                        <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-star" style="color:orange"></i>
-                                <span class="count bg-danger">4.2</span>
-                            </button>
-                        </div>
-                    </div>
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('store/users/default.png') }}" alt="User Avatar">
